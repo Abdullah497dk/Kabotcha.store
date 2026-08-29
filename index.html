@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kabotcha — Comfort, wherever you sit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=Markazi+Text:wght@500;600;700&family=Tajawal:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #EEE6D8;
+            --surface: #FAF6EC;
+            --surface-2: #F3ECDD;
+            --ink: #2A2018;
+            --ink-soft: #6B5C4C;
+            --wood: #7A4E2E;
+            --wood-dark: #3B2717;
+            --brass: #B08A4E;
+            --cushion: #D9C6A3;
+            --sage: #8B9A78;
+            --line: rgba(42, 32, 24, 0.12);
+            --shadow: 0 20px 50px -20px rgba(59, 39, 23, 0.35);
+            --radius-lg: 28px;
+            --radius-md: 18px;
+            --maxw: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html[dir="rtl"] body {
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-display {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin: 0;
+        }
+
+        html[dir="rtl"] h1,
+        html[dir="rtl"] h2,
+        html[dir="rtl"] h3,
+        html[dir="rtl"] .font-display {
+            font-family: 'Markazi Text', serif;
+            font-weight: 700;
+        }
+
+        img,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        section {
+            padding: 96px 0;
+        }
+
+        @media (max-width:720px) {
+            section {
+                padding: 64px 0;
+            }
+        }
+
+        /* ---------- NAV ---------- */
+        header.nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(238, 230, 216, 0.86);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav-inner {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .brand {
+            font-family: 'Fraunces', serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        html[dir="rtl"] .brand {
+            font-family: 'Markazi Text', serif;
+            font-size: 28px;
+        }
+
+        .brand span {
+            color: var(--wood);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .lang-toggle {
+            display: flex;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            overflow: hidden;
+            font-size: 13px;
+            font-weight: 600;
+            background: var(--surface);
+        }
+
+        .lang-toggle button {
+            border: none;
+            background: transparent;
+            padding: 8px 14px;
+            cursor: pointer;
+            color: var(--ink-soft);
+            font: inherit;
+            font-weight: 600;
+        }
+
+        .lang-toggle button.active {
+            background: var(--wood-dark);
+            color: #fff;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+        }
+
+        .btn-primary {
+            background: var(--wood-dark);
+            color: #fff;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            background: #2c1c10;
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--wood-dark);
+            border: 1.5px solid var(--wood-dark);
+        }
+
+        .btn-ghost:hover {
+            background: var(--wood-dark);
+            color: #fff;
+        }
+
+        .btn-sm {
+            padding: 9px 16px;
+            font-size: 13px;
+        }
+
+        .nav .btn-primary {
+            display: none;
+        }
+
+        @media (min-width:640px) {
+            .nav .btn-primary {
+                display: inline-flex;
+            }
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            padding-top: 64px;
+            padding-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        @media (max-width:900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--wood);
+            margin-bottom: 18px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--brass);
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 5vw, 56px);
+            line-height: 1.05;
+            color: var(--wood-dark);
+        }
+
+        html[dir="rtl"] .hero h1 {
+            font-size: clamp(38px, 6vw, 62px);
+            line-height: 1.2;
+        }
+
+        .hero p.lead {
+            margin-top: 22px;
+            font-size: 18px;
+            color: var(--ink-soft);
+            max-width: 46ch;
+        }
+
+        .hero-ctas {
+            margin-top: 32px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .hero-illustration-wrap {
+            position: relative;
+        }
+
+        .glow {
+            position: absolute;
+            inset: -10%;
+            z-index: 0;
+            background: radial-gradient(circle at 60% 40%, rgba(176, 138, 78, 0.35), transparent 60%);
+            filter: blur(10px);
+        }
+
+        .stand-svg {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: auto;
+        }
+
+        .hotspot {
+            cursor: pointer;
+        }
+
+        .hotspot .pulse {
+            transform-origin: center;
+            animation: pulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: .55;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.25);
+            }
+        }
+
+        .hotspot .part {
+            transition: filter .2s ease, transform .2s ease;
+            transform-origin: center;
+        }
+
+        .hotspot:hover .part,
+        .hotspot.active .part {
+            filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+        }
+
+        .hotspot.active .ring {
+            opacity: 1;
+        }
+
+        .ring {
+            opacity: 0;
+            transition: opacity .2s ease;
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            .hotspot .pulse {
+                animation: none;
+            }
+        }
+
+        .tap-hint {
+            text-align: center;
+            font-size: 13px;
+            color: var(--ink-soft);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .info-card {
+            margin-top: 22px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 20px 22px;
+            min-height: 104px;
+            box-shadow: 0 10px 30px -18px rgba(59, 39, 23, 0.3);
+            transition: opacity .15s ease;
+        }
+
+        .info-card h3 {
+            font-size: 19px;
+            color: var(--wood-dark);
+            margin-bottom: 6px;
+        }
+
+        .info-card p {
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 14.5px;
+        }
+
+        /* ---------- PROBLEM STRIP ---------- */
+        .problem {
+            background: var(--wood-dark);
+            color: #F3E9DA;
+            padding: 56px 0;
+        }
+
+        .problem p {
+            text-align: center;
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            font-size: clamp(20px, 2.6vw, 28px);
+            max-width: 820px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        html[dir="rtl"] .problem p {
+            font-family: 'Markazi Text', serif;
+            font-size: clamp(24px, 3.2vw, 32px);
+        }
+
+        /* ---------- FEATURE GRID ---------- */
+        .section-head {
+            max-width: 640px;
+            margin-bottom: 48px;
+        }
+
+        .section-head .eyebrow {
+            margin-bottom: 12px;
+        }
+
+        .section-head h2 {
+            font-size: clamp(28px, 3.6vw, 40px);
+            color: var(--wood-dark);
+        }
+
+        .feat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        @media (max-width:900px) {
+            .feat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width:560px) {
+            .feat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feat-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 26px;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .feat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .feat-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: var(--surface-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            color: var(--wood);
+        }
+
+        .feat-card h3 {
+            font-size: 18px;
+            color: var(--wood-dark);
+            margin-bottom: 8px;
+        }
+
+        .feat-card p {
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 14.5px;
+        }
+
+        /* ---------- QUALITY ---------- */
+        .quality {
+            background: var(--surface-2);
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        @media (max-width:900px) {
+            .quality-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .grain-card {
+            aspect-ratio: 4/3;
+            border-radius: var(--radius-lg);
+            background:
+                repeating-linear-gradient(100deg, rgba(0, 0, 0, 0.05) 0px, rgba(0, 0, 0, 0.05) 2px, transparent 2px, transparent 26px),
+                linear-gradient(135deg, #9C6A3E, #6E4527 60%, #4C2E19);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .grain-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.22), transparent 55%);
+        }
+
+        .quality h2 {
+            font-size: clamp(26px, 3.4vw, 36px);
+            color: var(--wood-dark);
+            margin-bottom: 18px;
+        }
+
+        .quality p {
+            color: var(--ink-soft);
+            font-size: 16px;
+            max-width: 48ch;
+        }
+
+        .quality-list {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quality-list li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 15px;
+            color: var(--ink);
+        }
+
+        .quality-list li svg {
+            flex: none;
+            margin-top: 2px;
+            color: var(--sage);
+        }
+
+        /* ---------- SOCIAL ---------- */
+        .social-banner {
+            background: var(--wood-dark);
+            color: #F3E9DA;
+            border-radius: var(--radius-lg);
+            padding: 64px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-banner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 30%, rgba(176, 138, 78, 0.3), transparent 55%);
+        }
+
+        .social-banner>* {
+            position: relative;
+        }
+
+        .social-banner .eyebrow {
+            justify-content: center;
+            color: var(--brass);
+        }
+
+        .social-banner .handle {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            font-size: clamp(28px, 4vw, 44px);
+            margin: 10px 0 14px;
+        }
+
+        html[dir="rtl"] .social-banner .handle {
+            font-family: 'Markazi Text', serif;
+            font-weight: 700;
+        }
+
+        .social-banner .lead-sm {
+            color: #E7D9C3;
+            max-width: 46ch;
+            margin: 0 auto 32px;
+            font-size: 16px;
+        }
+
+        .social-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .social-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14.5px;
+            transition: background .15s ease, transform .15s ease;
+        }
+
+        .social-pill:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .social-pill svg {
+            flex: none;
+        }
+
+        /* ---------- CTA BANNER ---------- */
+        .cta-banner {
+            background: var(--wood-dark);
+            color: #F3E9DA;
+            border-radius: var(--radius-lg);
+            padding: 64px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(176, 138, 78, 0.35), transparent 55%);
+        }
+
+        .cta-banner>* {
+            position: relative;
+        }
+
+        .cta-banner h2 {
+            font-size: clamp(26px, 3.6vw, 38px);
+        }
+
+        .cta-banner p {
+            margin: 14px auto 28px;
+            max-width: 52ch;
+            color: #E7D9C3;
+            font-size: 16px;
+        }
+
+        .cta-banner .btn-primary {
+            background: #fff;
+            color: var(--wood-dark);
+        }
+
+        .cta-banner .btn-primary:hover {
+            background: var(--cushion);
+        }
+
+        /* ---------- FAQ ---------- */
+        .faq-item {
+            border-bottom: 1px solid var(--line);
+            padding: 18px 0;
+        }
+
+        .faq-item summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 16.5px;
+            color: var(--wood-dark);
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary .chev {
+            transition: transform .2s ease;
+            flex: none;
+        }
+
+        .faq-item[open] summary .chev {
+            transform: rotate(45deg);
+        }
+
+        .faq-item p {
+            margin: 12px 0 0;
+            color: var(--ink-soft);
+            font-size: 15px;
+            max-width: 60ch;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background: var(--surface-2);
+            padding: 56px 0 28px;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            flex-wrap: wrap;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .footer-tag {
+            color: var(--ink-soft);
+            font-size: 14.5px;
+            margin-top: 8px;
+            max-width: 32ch;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .15s ease, color .15s ease, transform .15s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--wood-dark);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            font-size: 13px;
+            color: var(--ink-soft);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* ---------- reveal on scroll ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* RTL layout tweaks */
+        html[dir="rtl"] .hero-grid {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] .quality-grid {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] .eyebrow::before {
+            order: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="nav">
+        <div class="nav-inner">
+            <div class="brand">Kabotcha<span>.</span></div>
+            <div class="nav-right">
+                <div class="lang-toggle" role="group" aria-label="Language">
+                    <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+                    <button id="btn-ar" onclick="setLang('ar')">AR</button>
+                </div>
+                <a class="btn btn-primary btn-sm" id="wa-nav" target="_blank" rel="noopener" data-en="Order on WhatsApp"
+                    data-ar="اطلب عبر واتساب">Order on WhatsApp</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="wrap hero-grid">
+            <div>
+                <div class="eyebrow" data-en="Kabotcha · Lap &amp; Bed Desk" data-ar="كابوتشا · مكتب الأريكة والسرير">
+                    Kabotcha · Lap &amp; Bed Desk</div>
+                <h1 data-en="Your couch. Your desk. Your rules." data-ar="مساحتك للشغل... من مكانك المفضّل">Your couch.
+                    Your desk. Your rules.</h1>
+                <p class="lead"
+                    data-en="A cushioned lap desk with a real wood top — room for your laptop and mouse, built-in slots for your tablet and phone, and a padded arm rest for comfortable typing or studying."
+                    data-ar="مكتب أريكة مبطّن بسطح خشب طبيعي، يسع اللابتوب والماوس، وله فتحات مخصصة للتابلت والموبايل، ومسند ذراع مبطّن عشان تشتغل أو تذاكر بارتياح.">
+                    A cushioned lap desk with a real wood top — room for your laptop and mouse, built-in slots for your
+                    tablet and phone, and a padded arm rest for comfortable typing or studying.
+                </p>
+                <div class="hero-ctas">
+                    <a class="btn btn-primary" id="wa-hero" target="_blank" rel="noopener" data-en="Order on WhatsApp"
+                        data-ar="اطلب عبر واتساب">Order on WhatsApp</a>
+                    <a class="btn btn-ghost" href="#features" data-en="See how it works ↓"
+                        data-ar="شوف طريقة استخدامه ↓">See how it works ↓</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="hero-illustration-wrap">
+                    <div class="glow"></div>
+                    <svg class="stand-svg" viewBox="0 -40 600 420" xmlns="http://www.w3.org/2000/svg"
+                        aria-label="Interactive diagram of the Kabotcha lap desk, viewed from above">
+                        <!-- soft base peeking from underneath -->
+                        <g class="hotspot" data-feature="base">
+                            <rect class="part" x="10" y="6" width="580" height="352" rx="34" fill="var(--cushion)" />
+                            <rect class="ring" x="4" y="0" width="592" height="364" rx="38" fill="none"
+                                stroke="var(--sage)" stroke-width="4" />
+                            <circle class="pulse" cx="26" cy="26" r="6" fill="var(--sage)" />
+                        </g>
+
+                        <!-- wood top -->
+                        <g class="hotspot active" data-feature="wood">
+                            <rect class="part" x="20" y="16" width="560" height="332" rx="28" fill="url(#woodGrad)" />
+                            <path d="M45,140 Q 300,120 555,145" stroke="rgba(0,0,0,0.08)" stroke-width="3"
+                                fill="none" />
+                            <path d="M45,230 Q 300,250 555,225" stroke="rgba(0,0,0,0.07)" stroke-width="3"
+                                fill="none" />
+                            <!-- faint laptop + mouse hint -->
+                            <rect x="150" y="150" width="190" height="120" rx="10" fill="rgba(0,0,0,0.05)"
+                                stroke="rgba(0,0,0,0.14)" stroke-width="2" />
+                            <rect x="185" y="168" width="120" height="8" rx="4" fill="rgba(0,0,0,0.10)" />
+                            <rect x="378" y="195" width="42" height="64" rx="20" fill="rgba(0,0,0,0.05)"
+                                stroke="rgba(0,0,0,0.14)" stroke-width="2" />
+                            <rect class="ring" x="14" y="10" width="572" height="344" rx="32" fill="none"
+                                stroke="var(--wood-dark)" stroke-width="4" />
+                        </g>
+
+                        <!-- carry handle -->
+                        <g class="hotspot" data-feature="handle">
+                            <path class="part" d="M300,20 C300,-16 366,-16 366,20" stroke="#4A463D" stroke-width="16"
+                                fill="none" stroke-linecap="round" />
+                            <rect class="ring" x="280" y="-24" width="106" height="60" rx="20" fill="none"
+                                stroke="var(--brass)" stroke-width="3" />
+                            <circle class="pulse" cx="392" cy="4" r="6" fill="var(--brass)" />
+                        </g>
+
+                        <!-- tablet slot -->
+                        <g class="hotspot" data-feature="tablet">
+                            <rect class="part" x="70" y="52" width="230" height="26" rx="13" fill="#2E2013"
+                                transform="rotate(-3 185 65)" />
+                            <rect class="ring" x="58" y="34" width="256" height="60" rx="20" fill="none"
+                                stroke="var(--brass)" stroke-width="3" transform="rotate(-3 185 65)" />
+                            <circle class="pulse" cx="76" cy="48" r="6" fill="var(--brass)" />
+                        </g>
+
+                        <!-- phone slot -->
+                        <g class="hotspot" data-feature="phone">
+                            <rect class="part" x="335" y="56" width="110" height="24" rx="12" fill="#2E2013"
+                                transform="rotate(-3 390 68)" />
+                            <rect class="ring" x="323" y="38" width="134" height="56" rx="18" fill="none"
+                                stroke="var(--brass)" stroke-width="3" transform="rotate(-3 390 68)" />
+                            <circle class="pulse" cx="450" cy="52" r="6" fill="var(--brass)" />
+                        </g>
+
+                        <!-- padded arm rest -->
+                        <g class="hotspot" data-feature="wrist">
+                            <rect class="part" x="55" y="298" width="490" height="46" rx="23"
+                                fill="url(#fabricPattern)" />
+                            <rect class="ring" x="47" y="290" width="506" height="62" rx="31" fill="none"
+                                stroke="var(--sage)" stroke-width="3" />
+                            <circle class="pulse" cx="70" cy="321" r="6" fill="var(--sage)" />
+                        </g>
+
+                        <defs>
+                            <linearGradient id="woodGrad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#9C6A3E" />
+                                <stop offset="100%" stop-color="#5C3A22" />
+                            </linearGradient>
+                            <pattern id="fabricPattern" width="10" height="10" patternTransform="rotate(45)"
+                                patternUnits="userSpaceOnUse">
+                                <rect width="10" height="10" fill="#57534A" />
+                                <line x1="0" y1="0" x2="0" y2="10" stroke="#6B665A" stroke-width="2" />
+                            </pattern>
+                        </defs>
+                    </svg>
+                    <p class="tap-hint" data-en="👆 Tap the highlighted parts to explore"
+                        data-ar="👆 دوس على النقط المضيئة تعرف أكتر">👆 Tap the highlighted parts to explore</p>
+                </div>
+
+                <div class="info-card" id="info-card">
+                    <h3 id="info-title" data-en="Solid wood surface" data-ar="سطح خشبي طبيعي">Solid wood surface</h3>
+                    <p id="info-desc"
+                        data-en="A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books."
+                        data-ar="سطح خشب واسع وناعم يسع اللابتوب، الماوس، أو كومة كتب.">
+                        A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="problem">
+        <p class="reveal"
+            data-en="Hot laptop on your legs. Phone sliding off the blanket. Books everywhere. Sound familiar?"
+            data-ar="لابتوب سخن على رجلك، الموبايل بيقع من على السرير، والكتب متبعترة... حاسس بيك.">
+            Hot laptop on your legs. Phone sliding off the blanket. Books everywhere. Sound familiar?
+        </p>
+    </div>
+
+    <section id="features">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <div class="eyebrow" data-en="What's built in" data-ar="إيه اللي موجود">What's built in</div>
+                <h2 data-en="Everything you need, in one stand" data-ar="كل اللي محتاجه، في حاجة واحدة">Everything you
+                    need, in one stand</h2>
+            </div>
+            <div class="feat-grid">
+                <div class="feat-card reveal">
+                    <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="12" rx="2" />
+                            <path d="M2 20h20" />
+                        </svg></div>
+                    <h3 data-en="Solid wood surface" data-ar="سطح خشبي طبيعي">Solid wood surface</h3>
+                    <p data-en="A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books."
+                        data-ar="سطح خشب واسع وناعم يسع اللابتوب، الماوس، أو كومة كتب.">A wide, smooth wood top with
+                        plenty of room for your laptop, a mouse, or a stack of books.</p>
+                </div>
+                <div class="feat-card reveal">
+                    <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="4" y="3" width="16" height="18" rx="2" />
+                            <path d="M4 17h16" />
+                        </svg></div>
+                    <h3 data-en="Tablet slot" data-ar="فتحة للتابلت">Tablet slot</h3>
+                    <p data-en="A long slot near the back edge props your tablet upright — great for reading, video calls, or a second screen."
+                        data-ar="فتحة طويلة عند الحافة الخلفية تسند التابلت واقف، تظبط للقراءة أو المكالمات.">A long
+                        slot near the back edge props your tablet upright — great for reading, video calls, or a second
+                        screen.</p>
+                </div>
+                <div class="feat-card reveal">
+                    <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="7" y="2" width="10" height="20" rx="2" />
+                            <path d="M11 18h2" />
+                        </svg></div>
+                    <h3 data-en="Phone slot" data-ar="فتحة للموبايل">Phone slot</h3>
+                    <p data-en="A shorter slot right next to the tablet slot holds your phone upright, hands-free."
+                        data-ar="فتحة أقصر جنب فتحة التابلت تسند الموبايل واقف من غير ما تمسكه.">A shorter slot right
+                        next to the tablet slot holds your phone upright, hands-free.</p>
+                </div>
+                <div class="feat-card reveal">
+                    <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M6 8V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2" />
+                            <rect x="4" y="8" width="16" height="4" rx="2" />
+                        </svg></div>
+                    <h3 data-en="Built-in carry handle" data-ar="مقبض حمل مدمج">Built-in carry handle</h3>
+                    <p data-en="A fabric handle at the top lets you move it around the house like a small bag."
+                        data-ar="مقبض قماش في الأعلى يخليك تنقله في البيت زي الشنطة.">A fabric handle at the top lets
+                        you move it around the house like a small bag.</p>
+                </div>
+                <div class="feat-card reveal">
+                    <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="9" width="18" height="7" rx="3.5" />
+                            <path d="M6 16v2M18 16v2" />
+                        </svg></div>
+                    <h3 data-en="Padded arm rest" data-ar="مسند ذراع مبطّن">Padded arm rest</h3>
+                    <p data-en="A cushioned fabric bar along the front edge keeps your wrists comfortable while you type or write."
+                        data-ar="قطعة قماش مبطنة على الحافة الأمامية تريح رسغك وأنت بتكتب.">A cushioned fabric bar along
+                        the front edge keeps your wrists comfortable while you type or write.</p>
+                </div>
+                <div class="feat-card reveal">
+                    <div class="feat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M4 14c0-4 3-8 8-8s8 4 8 8" />
+                            <path d="M2 18h20" />
+                        </svg></div>
+                    <h3 data-en="Soft base underneath" data-ar="قاعدة مبطنة من تحت">Soft base underneath</h3>
+                    <p data-en="Molds to your lap or the mattress and keeps everything steady, wherever you sit."
+                        data-ar="بتتلم مع رجلك أو الفرشة، وتخلي كل حاجة ثابتة.">Molds to your lap or the mattress and
+                        keeps everything steady, wherever you sit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quality">
+        <div class="wrap quality-grid">
+            <div class="grain-card reveal"></div>
+            <div class="reveal">
+                <div class="eyebrow" data-en="Materials" data-ar="الخامات">Materials</div>
+                <h2 data-en="Made to last. Styled to belong." data-ar="جودة تدوم، وشكل يليق بمكانك">Made to last. Styled
+                    to belong.</h2>
+                <p data-en="A real wood top finished by hand, a padded fabric arm rest, and a dense cushioned base underneath — not a flimsy tray that wobbles or scratches your favorite blanket."
+                    data-ar="سطح خشب طبيعي متشغل بعناية، مسند ذراع مبطّن، وقاعدة إسفنجية كثيفة من تحت — مش تابلة هشة بتهتز أو بتخدش البطانية بتاعتك.">
+                    A real wood top finished by hand, a padded fabric arm rest, and a dense cushioned base underneath —
+                    not a flimsy tray that wobbles or scratches your favorite blanket.
+                </p>
+                <ul class="quality-list">
+                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg><span data-en="Genuine wood top, smooth finish"
+                            data-ar="سطح خشب طبيعي بلمسة نهائية ناعمة">Genuine wood top, smooth finish</span></li>
+                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg><span data-en="Angled slots for tablet and phone"
+                            data-ar="فتحات مائلة للتابلت والموبايل">Angled slots for tablet and phone</span></li>
+                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg><span data-en="Padded fabric arm rest for typing or writing"
+                            data-ar="مسند ذراع مبطّن للكتابة">Padded fabric arm rest for typing or writing</span></li>
+                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg><span data-en="Dense sponge base — stable on couch or bed"
+                            data-ar="قاعدة إسفنجية كثيفة، ثابتة على الأريكة أو السرير">Dense sponge base — stable on
+                            couch or bed</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <div class="social-banner reveal">
+                <div class="eyebrow" data-en="Find us online" data-ar="لاقينا أونلاين">Find us online</div>
+                <div class="handle">@kabotcha.store</div>
+                <p class="lead-sm"
+                    data-en="We're just getting started in Egypt — follow along for real setups, new colors, and what's coming next."
+                    data-ar="لسه بادئين في مصر، تابعنا تشوف استخدامات حقيقية، ألوان جديدة، وكل جديد.">
+                    We're just getting started in Egypt — follow along for real setups, new colors, and what's coming
+                    next.
+                </p>
+                <div class="social-pills">
+                    <a class="social-pill" href="https://www.tiktok.com/@kabotcha.store" target="_blank" rel="noopener">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M16.6 5.82a4.28 4.28 0 0 1-3.14-1.4v9.53a5.47 5.47 0 1 1-4.7-5.41v2.44a3 3 0 1 0 2.16 2.88V2h2.42a4.28 4.28 0 0 0 3.26 4.14z" />
+                        </svg>
+                        <span>TikTok</span>
+                    </a>
+                    <a class="social-pill" href="https://instagram.com/kabotcha.store" target="_blank" rel="noopener">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="5" />
+                            <circle cx="12" cy="12" r="4" />
+                            <circle cx="17.5" cy="6.5" r="1" />
+                        </svg>
+                        <span>Instagram</span>
+                    </a>
+                    <a class="social-pill" href="https://facebook.com/kabotcha.store" target="_blank" rel="noopener">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M13.5 21v-7.5H16l.5-3.5h-3V7.7c0-1 .3-1.7 1.8-1.7H16.6V2.8C16.3 2.8 15.2 2.7 14 2.7c-2.6 0-4.4 1.6-4.4 4.5v2.8H7v3.5h2.6V21z" />
+                        </svg>
+                        <span>Facebook</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap">
+            <div class="cta-banner reveal">
+                <h2 data-en="Ready to upgrade your couch setup?" data-ar="جاهز تطوّر مكان قعدتك؟">Ready to upgrade your
+                    couch setup?</h2>
+                <p data-en="Message us on WhatsApp for current pricing, colors in stock, and delivery across Egypt."
+                    data-ar="راسلنا على واتساب تعرف السعر الحالي، الألوان المتاحة، والتوصيل لمحافظتك.">
+                    Message us on WhatsApp for current pricing, colors in stock, and delivery across Egypt.
+                </p>
+                <a class="btn btn-primary" id="wa-banner" target="_blank" rel="noopener" data-en="Chat on WhatsApp"
+                    data-ar="كلمنا على واتساب">Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="wrap" style="max-width:820px;">
+            <div class="section-head reveal">
+                <div class="eyebrow" data-en="Good to know" data-ar="معلومات تهمك">Good to know</div>
+                <h2 data-en="Frequently asked questions" data-ar="أسئلة شائعة">Frequently asked questions</h2>
+            </div>
+
+            <details class="faq-item reveal" open>
+                <summary><span data-en="What's it made of?" data-ar="مصنوع من إيه؟">What's it made of?</span>
+                    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M12 5v14M5 12h14" />
+                    </svg>
+                </summary>
+                <p data-en="A solid wood top, a padded fabric arm rest, and a dense cushioned sponge base underneath — built to hold a laptop steadily without wobbling."
+                    data-ar="سطح خشب طبيعي، مسند ذراع مبطّن، وقاعدة إسفنجية كثيفة من تحت — مصمم يشيل اللابتوب بثبات من غير ما يهتز.">
+                    A solid wood top, a padded fabric arm rest, and a dense cushioned sponge base underneath — built to
+                    hold a laptop steadily without wobbling.
+                </p>
+            </details>
+            <details class="faq-item reveal">
+                <summary><span data-en="Does it work on both a couch and a bed?"
+                        data-ar="يشتغل على الأريكة والسرير؟">Does it work on both a couch and a bed?</span>
+                    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M12 5v14M5 12h14" />
+                    </svg>
+                </summary>
+                <p data-en="Yes — the cushioned base adjusts to soft or firm surfaces, so it sits flat either way."
+                    data-ar="أيوه، القاعدة المبطنة بتتظبط على أي سطح ناعم أو صلب، وتفضل مستوية.">
+                    Yes — the cushioned base adjusts to soft or firm surfaces, so it sits flat either way.
+                </p>
+            </details>
+            <details class="faq-item reveal">
+                <summary><span data-en="Can I fit a tablet and phone at the same time?"
+                        data-ar="أقدر أحط تابلت وموبايل مع بعض؟">Can I fit a tablet and phone at the same time?</span>
+                    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M12 5v14M5 12h14" />
+                    </svg>
+                </summary>
+                <p data-en="Yes — the phone slot and tablet slot work independently, so you can use both together."
+                    data-ar="أيوه، فتحة الموبايل وفتحة التابلت شغالين لوحدهم، تقدر تستخدمهم مع بعض.">
+                    Yes — the phone slot and tablet slot work independently, so you can use both together.
+                </p>
+            </details>
+            <details class="faq-item reveal">
+                <summary><span data-en="Can I carry it around the house?" data-ar="أقدر أنقله في البيت؟">Can I carry it
+                        around the house?</span>
+                    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M12 5v14M5 12h14" />
+                    </svg>
+                </summary>
+                <p data-en="Yes — there's a built-in fabric handle at the top edge, so you can move it from room to room like a small bag."
+                    data-ar="أيوه، فيه مقبض قماش مدمج في الحافة العلوية، تقدر تنقله من أوضة لأوضة زي الشنطة الصغيرة.">
+                    Yes — there's a built-in fabric handle at the top edge, so you can move it from room to room like a
+                    small bag.
+                </p>
+            </details>
+            <details class="faq-item reveal">
+                <summary><span data-en="Do you deliver across Egypt?" data-ar="التوصيل لكل المحافظات؟">Do you deliver
+                        across Egypt?</span>
+                    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M12 5v14M5 12h14" />
+                    </svg>
+                </summary>
+                <p data-en="Message us on WhatsApp with your city and we'll confirm delivery time and cost."
+                    data-ar="راسلنا على واتساب بمحافظتك ونأكدلك مدة وتكلفة التوصيل.">
+                    Message us on WhatsApp with your city and we'll confirm delivery time and cost.
+                </p>
+            </details>
+            <details class="faq-item reveal">
+                <summary><span data-en="What if I'm not happy with it?" data-ar="لو مش عاجبني؟">What if I'm not happy
+                        with it?</span>
+                    <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M12 5v14M5 12h14" />
+                    </svg>
+                </summary>
+                <p data-en="Reach out to us directly on WhatsApp or Instagram — we'll sort it out."
+                    data-ar="كلمنا على واتساب أو إنستجرام وهنظبطها مع بعض.">
+                    Reach out to us directly on WhatsApp or Instagram — we'll sort it out.
+                </p>
+            </details>
+        </div>
+    </section>
+
+    <footer>
+        <div class="wrap">
+            <div class="footer-top">
+                <div>
+                    <div class="brand">Kabotcha<span>.</span></div>
+                    <p class="footer-tag" data-en="Comfort, wherever you sit." data-ar="الراحة، في أي مكان بتقعد فيه.">
+                        Comfort, wherever you sit.</p>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.tiktok.com/@kabotcha.store" target="_blank" rel="noopener" aria-label="TikTok">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M16.6 5.82a4.28 4.28 0 0 1-3.14-1.4v9.53a5.47 5.47 0 1 1-4.7-5.41v2.44a3 3 0 1 0 2.16 2.88V2h2.42a4.28 4.28 0 0 0 3.26 4.14z" />
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/kabotcha.store" target="_blank" rel="noopener"
+                        aria-label="Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="5" />
+                            <circle cx="12" cy="12" r="4" />
+                            <circle cx="17.5" cy="6.5" r="1" />
+                        </svg>
+                    </a>
+                    <a href="https://facebook.com/kabotcha.store" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M13.5 21v-7.5H16l.5-3.5h-3V7.7c0-1 .3-1.7 1.8-1.7H16.6V2.8C16.3 2.8 15.2 2.7 14 2.7c-2.6 0-4.4 1.6-4.4 4.5v2.8H7v3.5h2.6V21z" />
+                        </svg>
+                    </a>
+                    <a href="#" id="wa-footer" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.7 14.2c-.2.6-1.4 1.2-2 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-5-4.3-5.1-4.5-.2-.2-1.2-1.6-1.2-3.1s.8-2.2 1.1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.6.7 1.9.8 2.1.1.2.1.4 0 .6-.1.2-.2.3-.4.5l-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.2.1.4.2.5.3.1.2.1.9-.1 1.5z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span data-en="© 2026 Kabotcha.store — All rights reserved."
+                    data-ar="© 2026 Kabotcha.store — جميع الحقوق محفوظة.">© 2026 Kabotcha.store — All rights
+                    reserved.</span>
+                <span data-en="Made for couches, beds, and everywhere in between."
+                    data-ar="اتصنع للأريكة والسرير وكل حتة بينهم.">Made for couches, beds, and everywhere in
+                    between.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ---- PLACEHOLDERS: replace before going live ----
+        const WHATSAPP_NUMBER = "201000000000"; // Egypt number in international format, no + or spaces
+        const WA_MESSAGE = { en: "Hi! I'm interested in the Kabotcha lap stand.", ar: "أهلاً! حابب أعرف أكتر عن ستاند كابوتشا." };
+
+        function buildWaLink(lang) {
+            return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WA_MESSAGE[lang])}`;
+        }
+
+        let currentLang = 'en';
+
+        function updateWaLinks() {
+            const link = buildWaLink(currentLang);
+            ['wa-nav', 'wa-hero', 'wa-banner', 'wa-footer'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.href = link;
+            });
+        }
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const val = el.dataset[lang];
+                if (val !== undefined) el.textContent = val;
+            });
+            updateWaLinks();
+        }
+
+        // feature hotspot info panel
+        const featureInfo = {
+            wood: {
+                en: { title: "Solid wood surface", desc: "A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books." },
+                ar: { title: "سطح خشبي طبيعي", desc: "سطح خشب واسع وناعم يسع اللابتوب، الماوس، أو كومة كتب." }
+            },
+            tablet: {
+                en: { title: "Tablet slot", desc: "A long slot near the back edge props your tablet upright — great for reading, video calls, or a second screen." },
+                ar: { title: "فتحة للتابلت", desc: "فتحة طويلة عند الحافة الخلفية تسند التابلت واقف، تظبط للقراءة أو المكالمات أو كشاشة تانية." }
+            },
+            phone: {
+                en: { title: "Phone slot", desc: "A shorter slot right next to it holds your phone upright, hands-free." },
+                ar: { title: "فتحة للموبايل", desc: "فتحة أقصر جنبها تسند الموبايل واقف من غير ما تمسكه." }
+            },
+            handle: {
+                en: { title: "Built-in carry handle", desc: "A fabric handle at the top lets you carry it around the house like a small bag." },
+                ar: { title: "مقبض حمل مدمج", desc: "مقبض قماش في الأعلى يخليك تنقله في البيت زي الشنطة." }
+            },
+            wrist: {
+                en: { title: "Padded arm rest", desc: "A cushioned fabric bar along the front edge keeps your wrists comfortable while you type or write." },
+                ar: { title: "مسند ذراع مبطّن", desc: "قطعة قماش مبطنة على الحافة الأمامية تريح رسغك وأنت بتكتب." }
+            },
+            base: {
+                en: { title: "Soft base underneath", desc: "A cushioned underside that molds to your lap or the mattress and keeps everything steady." },
+                ar: { title: "قاعدة مبطنة من تحت", desc: "قاعدة مبطنة من تحت بتتلم مع رجلك أو الفرشة وتخلي كل حاجة ثابتة." }
+            }
+        };
+
+        const hotspots = document.querySelectorAll('.hotspot');
+        hotspots.forEach(h => {
+            h.addEventListener('click', () => {
+                hotspots.forEach(o => o.classList.remove('active'));
+                h.classList.add('active');
+                const key = h.dataset.feature;
+                const data = featureInfo[key][currentLang];
+                document.getElementById('info-title').textContent = data.title;
+                document.getElementById('info-desc').textContent = data.desc;
+            });
+        });
+
+        // scroll reveal
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // auto-detect language from the visitor's browser: Arabic browsers get
+        // the Arabic version, everything else defaults to English. The EN/AR
+        // toggle above still lets anyone switch manually.
+        const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+        if (browserLang.startsWith('ar')) {
+            setLang('ar');
+        } else {
+            updateWaLinks();
+        }
+    </script>
+</body>
+
+</html>
