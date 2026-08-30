@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/logo.png">
     <title>Kabotcha — Comfort, wherever you sit</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,15 +116,15 @@
         }
 
         .brand {
-            font-family: 'Fraunces', serif;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
         }
 
-        html[dir="rtl"] .brand {
-            font-family: 'Markazi Text', serif;
-            font-size: 28px;
+        .brand img {
+            height: 40px;
+            width: auto;
+            display: block;
         }
 
         .brand span {
@@ -796,7 +797,9 @@
 
     <header class="nav">
         <div class="nav-inner">
-            <div class="brand">Kabotcha<span>.</span>store</div>
+            <a class="brand" href="/" aria-label="Kabotcha.store — Home">
+                <img src="img/logo.png" alt="Kabotcha.store logo">
+            </a>
             <div class="nav-right">
                 <div class="lang-toggle" role="group" aria-label="Language">
                     <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
@@ -1217,7 +1220,9 @@
         <div class="wrap">
             <div class="footer-top">
                 <div>
-                    <div class="brand">Kabotcha<span>.</span></div>
+                    <div class="brand">
+                        <img src="img/logo.png" alt="Kabotcha.store logo">
+                    </div>
                     <p class="footer-tag" data-key="k051" data-en="Comfort, wherever you sit."
                         data-ar="الراحة، في أي مكان بتقعد فيه.">Comfort, wherever you sit.</p>
                 </div>
