@@ -306,48 +306,86 @@
             cursor: pointer;
         }
 
+        /* pulse dot on each hotspot */
         .hotspot .pulse {
             transform-origin: center;
             animation: pulse 2.4s ease-in-out infinite;
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: .55;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.25);
-            }
+            0%, 100% { opacity: .55; transform: scale(1); }
+            50%       { opacity: 1;   transform: scale(1.5); }
         }
 
         .hotspot .part {
-            transition: filter .2s ease, transform .2s ease;
+            transition: filter .25s ease, transform .25s ease;
             transform-origin: center;
         }
 
-        .hotspot:hover .part,
+        /* hover: subtle lift */
+        .hotspot:hover .part {
+            filter: brightness(1.12);
+        }
+
+        /* active: vivid glow + scale up */
         .hotspot.active .part {
-            filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+            filter:
+                drop-shadow(0 0 8px rgba(176,138,78,.9))
+                drop-shadow(0 0 18px rgba(176,138,78,.45))
+                brightness(1.15);
+        }
+
+        /* ring flashes in when active */
+        .ring {
+            opacity: 0;
+            transition: opacity .25s ease, stroke-dashoffset .4s ease;
         }
 
         .hotspot.active .ring {
             opacity: 1;
+            animation: ring-ping .5s ease forwards;
         }
 
-        .ring {
+        @keyframes ring-ping {
+            0%   { opacity: 0; transform: scale(.85); }
+            60%  { opacity: 1; transform: scale(1.06); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* connector arrow: a glowing dot between SVG and info-card */
+        .info-connector {
+            display: flex;
+            justify-content: center;
+            margin: 6px 0 0;
+            height: 22px;
+            position: relative;
+        }
+
+        .info-connector::before {
+            content: '';
+            display: block;
+            width: 3px;
+            height: 22px;
+            border-radius: 99px;
+            background: linear-gradient(to bottom, var(--brass), transparent);
             opacity: 0;
-            transition: opacity .2s ease;
+            transition: opacity .3s ease;
+        }
+
+        .info-connector.active::before {
+            opacity: 1;
+            animation: connector-draw .35s ease forwards;
+        }
+
+        @keyframes connector-draw {
+            from { height: 0; opacity: 0; }
+            to   { height: 22px; opacity: 1; }
         }
 
         @media (prefers-reduced-motion:reduce) {
-            .hotspot .pulse {
-                animation: none;
-            }
+            .hotspot .pulse { animation: none; }
+            .hotspot.active .ring { animation: none; }
+            .info-connector::before { animation: none; }
         }
 
         .tap-hint {
@@ -362,26 +400,69 @@
         }
 
         .info-card {
-            margin-top: 22px;
+            margin-top: 8px;
             background: var(--surface);
-            border: 1px solid var(--line);
+            border: 1.5px solid var(--brass);
             border-radius: var(--radius-md);
             padding: 20px 22px;
             min-height: 104px;
-            box-shadow: 0 10px 30px -18px rgba(59, 39, 23, 0.3);
-            transition: opacity .15s ease;
+            box-shadow:
+                0 10px 30px -18px rgba(59, 39, 23, 0.35),
+                0 0 0 4px rgba(176,138,78,.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* shimmer bar that sweeps across on each update */
+        .info-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg,
+                transparent 30%,
+                rgba(176,138,78,.18) 50%,
+                transparent 70%);
+            background-size: 200% 100%;
+            background-position: 200% 0;
+            pointer-events: none;
+        }
+
+        .info-card.flash::before {
+            animation: shimmer .55s ease forwards;
+        }
+
+        @keyframes shimmer {
+            from { background-position: 200% 0; }
+            to   { background-position: -200% 0; }
+        }
+
+        /* content pop-in */
+        .info-card.flash .info-content {
+            animation: card-pop .35s cubic-bezier(.22,.68,0,1.2) forwards;
+        }
+
+        @keyframes card-pop {
+            0%   { opacity: 0; transform: translateY(10px) scale(.97); }
+            100% { opacity: 1; transform: translateY(0)   scale(1); }
+        }
+
+        .info-content {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
         .info-card h3 {
             font-size: 19px;
             color: var(--wood-dark);
-            margin-bottom: 6px;
+            margin: 0;
         }
 
         .info-card p {
             margin: 0;
             color: var(--ink-soft);
             font-size: 14.5px;
+            line-height: 1.55;
         }
 
         /* ---------- PROBLEM STRIP ---------- */
@@ -916,14 +997,18 @@
                         data-ar="👆 دوس على النقط المضيئة تعرف أكتر">👆 Tap the highlighted parts to explore</p>
                 </div>
 
+                <!-- glowing connector line between SVG and info card -->
+                <div class="info-connector" id="info-connector"></div>
+
                 <div class="info-card" id="info-card">
-                    <h3 id="info-title" data-key="k008" data-en="Solid wood surface" data-ar="سطح خشبي طبيعي">Solid wood
-                        surface</h3>
-                    <p id="info-desc" data-key="k009"
-                        data-en="A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books."
-                        data-ar="سطح خشب واسع وناعم يسع اللابتوب، الماوس، أو كومة كتب.">
-                        A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books.
-                    </p>
+                    <div class="info-content">
+                        <h3 id="info-title" data-key="k008" data-en="Solid wood surface" data-ar="سطح خشبي طبيعي">Solid wood surface</h3>
+                        <p id="info-desc" data-key="k009"
+                            data-en="A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books."
+                            data-ar="سطح خشب واسع وناعم يسع اللابتوب، الماوس، أو كومة كتب.">
+                            A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1430,6 +1515,19 @@
         };
 
         const hotspots = document.querySelectorAll('.hotspot');
+        const infoCard = document.getElementById('info-card');
+        const infoConnector = document.getElementById('info-connector');
+
+        function triggerCardAnim() {
+            // re-trigger flash animation by removing then re-adding the class
+            infoCard.classList.remove('flash');
+            infoConnector.classList.remove('active');
+            // force reflow so animation restarts
+            void infoCard.offsetWidth;
+            infoCard.classList.add('flash');
+            infoConnector.classList.add('active');
+        }
+
         hotspots.forEach(h => {
             h.addEventListener('click', () => {
                 hotspots.forEach(o => o.classList.remove('active'));
@@ -1438,8 +1536,12 @@
                 const data = featureInfo[key][currentLang];
                 document.getElementById('info-title').textContent = data.title;
                 document.getElementById('info-desc').textContent = data.desc;
+                triggerCardAnim();
             });
         });
+
+        // trigger once on load so the default selected hotspot animates in
+        triggerCardAnim();
 
         // scroll reveal
         const io = new IntersectionObserver((entries) => {
