@@ -1298,17 +1298,30 @@
         }
 
         // ---------------------------------------------------------------
-        // OWNER-EDITABLE CONTENT (no code needed):
-        // Every text on this page has a data-key (e.g. k007). Publish a
-        // Google Sheet with columns: key | new_english | new_arabic
-        // (see content-template.csv for the full starter list of keys).
-        // File > Share > Publish to web > choose the sheet + CSV > Publish,
-        // then paste that link below as SHEET_CSV_URL. Any row with text in
-        // new_english / new_arabic overrides that spot on the site; leave a
-        // cell blank to keep the current wording. No redeploy needed —
-        // edits in the sheet show up next time the page loads.
+        // CONTENT DATABASE — driven by content.csv (local file).
+        //
+        // content.csv is the single source of truth for all site copy.
+        // Columns: key | new_english | new_arabic
+        //
+        // HOW IT WORKS:
+        //   1. The page fetches content.csv on every load.
+        //   2. If a Google Sheet URL is set below, that sheet is fetched
+        //      next and its non-empty cells override content.csv values.
+        //      This lets you tweak live copy from Google Sheets without
+        //      touching the file.
+        //   3. Blank cells in either source keep the HTML default text.
+        //
+        // WORKFLOW FOR COPY CHANGES:
+        //   a. Edit content.csv (this is your database).
+        //   b. Paste the same changes into the Google Sheet so it stays
+        //      in sync — the agent will remind you each time.
+        //   c. No other files need to be changed.
+        //
+        // To enable the Google Sheet override, publish the sheet as CSV
+        // (File > Share > Publish to web > CSV) and paste the link below.
         // ---------------------------------------------------------------
-        const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5l7zrAEwP4pZWHFERehSrVoTV5l4kj7rgjMG8JaBVFHRBvbM-nAHUJsZgjis82CPBwKzgCFgEhSnL/pub?gid=0&single=true&output=csv"; // <-- paste the published Google Sheet CSV link here
+        const LOCAL_CSV_URL = "content.csv";
+        const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5l7zrAEwP4pZWHFERehSrVoTV5l4kj7rgjMG8JaBVFHRBvbM-nAHUJsZgjis82CPBwKzgCFgEhSnL/pub?gid=0&single=true&output=csv"; // <-- published Google Sheet CSV link (optional override)
 
         let contentOverrides = {};
 
@@ -1334,24 +1347,50 @@
             return rows;
         }
 
+        function applyCSVRows(rows, overrides) {
+            if (!rows || rows.length < 2) return;
+            const header = rows[0].map(h => h.trim().toLowerCase());
+            const keyIdx = header.indexOf('key');
+            const enIdx = header.indexOf('new_english');
+            const arIdx = header.indexOf('new_arabic');
+            if (keyIdx === -1) return;
+            rows.slice(1).forEach(r => {
+                const key = (r[keyIdx] || '').trim();
+                if (!key) return;
+                const en = (r[enIdx] || '').trim();
+                const ar = (r[arIdx] || '').trim();
+                // only write non-empty values (blank = keep existing)
+                if (en || ar) {
+                    overrides[key] = {
+                        en: en || (overrides[key] && overrides[key].en) || '',
+                        ar: ar || (overrides[key] && overrides[key].ar) || ''
+                    };
+                }
+            });
+        }
+
         async function loadContentOverrides() {
+            // Step 1: load the local content.csv (base database)
+            try {
+                const res = await fetch(LOCAL_CSV_URL + '?v=' + Date.now());
+                if (res.ok) {
+                    const text = await res.text();
+                    applyCSVRows(parseCSV(text), contentOverrides);
+                }
+            } catch (err) {
+                console.warn('Could not load content.csv:', err);
+            }
+
+            // Step 2: overlay with Google Sheet (optional live overrides)
             if (!SHEET_CSV_URL) return;
             try {
                 const res = await fetch(SHEET_CSV_URL + (SHEET_CSV_URL.includes('?') ? '&' : '?') + 'cachebust=' + Date.now());
-                const text = await res.text();
-                const rows = parseCSV(text);
-                const header = rows[0].map(h => h.trim().toLowerCase());
-                const keyIdx = header.indexOf('key');
-                const enIdx = header.indexOf('new_english');
-                const arIdx = header.indexOf('new_arabic');
-                if (keyIdx === -1) return;
-                rows.slice(1).forEach(r => {
-                    const key = (r[keyIdx] || '').trim();
-                    if (!key) return;
-                    contentOverrides[key] = { en: r[enIdx] || '', ar: r[arIdx] || '' };
-                });
+                if (res.ok) {
+                    const text = await res.text();
+                    applyCSVRows(parseCSV(text), contentOverrides);
+                }
             } catch (err) {
-                console.warn('Could not load content overrides from sheet:', err);
+                console.warn('Could not load Google Sheet overrides:', err);
             }
         }
 
