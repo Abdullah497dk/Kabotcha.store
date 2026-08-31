@@ -288,79 +288,10 @@
         }
 
         /* ---------- HERO SHOWCASE & SLIDESHOW ---------- */
-        .hero-showcase {
+        .hero-slideshow-container {
             display: flex;
             flex-direction: column;
             width: 100%;
-        }
-
-        .hero-view-toggle {
-            display: inline-flex;
-            align-self: flex-start;
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            padding: 4px;
-            margin-bottom: 12px;
-            gap: 4px;
-            box-shadow: 0 4px 12px rgba(42, 32, 24, 0.05);
-        }
-
-        html[dir="rtl"] .hero-view-toggle {
-            align-self: flex-start;
-        }
-
-        .view-toggle-btn {
-            border: none;
-            background: transparent;
-            border-radius: 999px;
-            padding: 6px 14px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            color: var(--ink-soft);
-            font-family: inherit;
-            transition: all .2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .view-toggle-btn:hover {
-            color: var(--ink);
-        }
-
-        .view-toggle-btn.active {
-            background: var(--wood-dark);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(59, 39, 23, 0.25);
-        }
-
-        /* Slideshow View Container */
-        .hero-slideshow-wrap {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-            animation: fadeInView .3s ease forwards;
-        }
-
-        .hero-slideshow-wrap.active {
-            display: flex;
-        }
-
-        .hero-blueprint-wrap {
-            display: none;
-            width: 100%;
-            animation: fadeInView .3s ease forwards;
-        }
-
-        .hero-blueprint-wrap.active {
-            display: block;
-        }
-
-        @keyframes fadeInView {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Scenario Pills */
@@ -508,8 +439,28 @@
             background: #fff;
         }
 
-        .hero-illustration-wrap {
+        /* ---------- DEDICATED INTERACTIVE EXPLORER SECTION ---------- */
+        .explorer-section {
+            background: var(--surface);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
             position: relative;
+        }
+
+        .explorer-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 44px;
+            align-items: center;
+        }
+
+        .explorer-visual {
+            position: relative;
+            background: var(--surface-2);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow);
         }
 
         .glow {
@@ -531,7 +482,6 @@
             cursor: pointer;
         }
 
-        /* pulse dot on each hotspot */
         .hotspot .pulse {
             transform-origin: center;
             animation: pulse 2.4s ease-in-out infinite;
@@ -547,12 +497,10 @@
             transform-origin: center;
         }
 
-        /* hover: subtle lift */
         .hotspot:hover .part {
             filter: brightness(1.12);
         }
 
-        /* active: vivid glow + scale up */
         .hotspot.active .part {
             filter:
                 drop-shadow(0 0 8px rgba(176,138,78,.9))
@@ -560,7 +508,6 @@
                 brightness(1.15);
         }
 
-        /* ring flashes in when active */
         .ring {
             opacity: 0;
             transition: opacity .25s ease, stroke-dashoffset .4s ease;
@@ -577,79 +524,64 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        .explore-container {
-            position: relative;
+        /* Explorer Panel & Feature Pills */
+        .explorer-panel {
             display: flex;
             flex-direction: column;
+            gap: 16px;
         }
 
-        /* connector line: starts from active hotspot center and drops to info-card */
-        .dynamic-connector-line {
-            position: absolute;
-            width: 2.5px;
-            background: linear-gradient(to bottom, var(--brass), var(--brass) 75%, transparent);
-            box-shadow: 0 0 10px rgba(176, 138, 78, 0.85);
-            z-index: 5;
-            pointer-events: none;
-            opacity: 0;
-            transform-origin: top center;
-            transition: 
-                opacity 0.25s ease, 
-                left 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                top 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                height 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .dynamic-connector-line.active {
-            opacity: 1;
-            animation: line-draw 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes line-draw {
-            from { transform: scaleY(0); }
-            to   { transform: scaleY(1); }
-        }
-
-        @media (prefers-reduced-motion:reduce) {
-            .hotspot .pulse { animation: none; }
-            .hotspot.active .ring { animation: none; }
-            .info-connector::before { animation: none; }
-        }
-
-        .tap-hint {
-            text-align: center;
-            font-size: 13px;
-            color: var(--ink-soft);
-            margin-top: 10px;
+        .feature-selector-pills {
             display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .feature-pill {
+            border: 1px solid var(--line);
+            background: var(--surface-2);
+            color: var(--ink-soft);
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all .2s ease;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 6px;
         }
 
+        .feature-pill:hover {
+            border-color: var(--brass);
+            color: var(--ink);
+            transform: translateY(-1px);
+        }
+
+        .feature-pill.active {
+            background: var(--wood-dark);
+            color: #fff;
+            border-color: var(--wood-dark);
+            box-shadow: 0 4px 12px rgba(59, 39, 23, 0.25);
+        }
+
+        /* Info Card */
         .info-card {
-            margin-top: 8px;
-            background: var(--surface);
+            background: var(--surface-2);
             border: 1.5px solid var(--brass);
             border-radius: var(--radius-md);
-            padding: 20px 22px;
-            min-height: 104px;
-            box-shadow:
-                0 10px 30px -18px rgba(59, 39, 23, 0.35),
-                0 0 0 4px rgba(176,138,78,.08);
+            padding: 24px;
+            box-shadow: 0 10px 30px -18px rgba(59, 39, 23, 0.35), 0 0 0 4px rgba(176,138,78,.08);
             position: relative;
             overflow: hidden;
         }
 
-        /* shimmer bar that sweeps across on each update */
         .info-card::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(120deg,
-                transparent 30%,
-                rgba(176,138,78,.18) 50%,
-                transparent 70%);
+            background: linear-gradient(120deg, transparent 30%, rgba(176,138,78,.15) 50%, transparent 70%);
             background-size: 200% 100%;
             background-position: 200% 0;
             pointer-events: none;
@@ -664,33 +596,61 @@
             to   { background-position: -200% 0; }
         }
 
-        /* content pop-in */
+        .info-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(176, 138, 78, 0.14);
+            border: 1px solid rgba(176, 138, 78, 0.35);
+            color: var(--wood-dark);
+            font-size: 11.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 4px 10px;
+            border-radius: 999px;
+            margin-bottom: 12px;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--brass);
+            display: inline-block;
+            box-shadow: 0 0 6px var(--brass);
+        }
+
         .info-card.flash .info-content {
             animation: card-pop .35s cubic-bezier(.22,.68,0,1.2) forwards;
         }
 
         @keyframes card-pop {
-            0%   { opacity: 0; transform: translateY(10px) scale(.97); }
+            0%   { opacity: 0; transform: translateY(8px) scale(.98); }
             100% { opacity: 1; transform: translateY(0)   scale(1); }
         }
 
         .info-content {
             display: flex;
             flex-direction: column;
-            gap: 6px;
         }
 
         .info-card h3 {
-            font-size: 19px;
+            font-size: 20px;
             color: var(--wood-dark);
-            margin: 0;
+            margin: 0 0 8px;
         }
 
         .info-card p {
             margin: 0;
             color: var(--ink-soft);
-            font-size: 14.5px;
+            font-size: 15px;
             line-height: 1.55;
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            .hotspot .pulse { animation: none; }
+            .hotspot.active .ring { animation: none; }
         }
 
         /* ---------- PROBLEM STRIP ---------- */
@@ -1253,19 +1213,33 @@
                 width: 18px;
             }
 
-            /* BLUEPRINT & INFO CARD */
-            .tap-hint {
+            /* INTERACTIVE EXPLORER & INFO CARD */
+            .explorer-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .explorer-visual {
+                padding: 14px;
+                border-radius: 18px;
+            }
+            .feature-selector-pills {
+                gap: 6px;
+            }
+            .feature-pill {
+                padding: 6px 12px;
                 font-size: 12px;
-                margin-top: 8px;
             }
             .info-card {
-                padding: 14px 16px;
-                margin-top: 6px;
-                min-height: auto;
+                padding: 16px 18px;
                 border-radius: 14px;
             }
+            .info-badge {
+                font-size: 10.5px;
+                padding: 3px 8px;
+                margin-bottom: 8px;
+            }
             .info-card h3 {
-                font-size: 16px;
+                font-size: 17px;
                 margin-bottom: 4px;
             }
             .info-card p {
@@ -1444,153 +1418,172 @@
                 </div>
             </div>
 
-            <div class="hero-showcase">
-                <!-- Mode Switcher: Real Photos vs Blueprint -->
-                <div class="hero-view-toggle" role="tablist" aria-label="Hero View Mode">
-                    <button class="view-toggle-btn active" id="view-photos-btn" data-key="k054" data-en="📸 Real Photos" data-ar="📸 صور حقيقية" onclick="switchHeroView('photos')">📸 Real Photos</button>
-                    <button class="view-toggle-btn" id="view-blueprint-btn" data-key="k055" data-en="🔍 Blueprint" data-ar="🔍 تفاصيل التصميم" onclick="switchHeroView('blueprint')">🔍 Blueprint</button>
+            <!-- Hero Right Column: Permanent Lifestyle Slideshow -->
+            <div class="hero-slideshow-container">
+                <div class="slideshow-pills">
+                    <button class="slide-pill active" data-index="0" data-key="k056" data-en="💻 Laptop" data-ar="💻 لابتوب" onclick="goToSlide(0)">💻 Laptop</button>
+                    <button class="slide-pill" data-index="1" data-key="k057" data-en="📱 Tablet &amp; Phone" data-ar="📱 تابلت وموبايل" onclick="goToSlide(1)">📱 Tablet &amp; Phone</button>
+                    <button class="slide-pill" data-index="2" data-key="k058" data-en="📖 Reading" data-ar="📖 قراءة ومذاكرة" onclick="goToSlide(2)">📖 Reading</button>
+                    <button class="slide-pill" data-index="3" data-key="k059" data-en="🎨 Creative" data-ar="🎨 رسم وتصميم" onclick="goToSlide(3)">🎨 Creative</button>
+                    <button class="slide-pill" data-index="4" data-key="k060" data-en="🪵 Clean Desk" data-ar="🪵 سطح خشبي" onclick="goToSlide(4)">🪵 Clean Desk</button>
                 </div>
 
-                <!-- 1. Real Photos Slideshow View -->
-                <div class="hero-slideshow-wrap active" id="hero-slideshow-view">
-                    <div class="slideshow-pills">
-                        <button class="slide-pill active" data-index="0" data-key="k056" data-en="💻 Laptop" data-ar="💻 لابتوب" onclick="goToSlide(0)">💻 Laptop</button>
-                        <button class="slide-pill" data-index="1" data-key="k057" data-en="📱 Tablet &amp; Phone" data-ar="📱 تابلت وموبايل" onclick="goToSlide(1)">📱 Tablet &amp; Phone</button>
-                        <button class="slide-pill" data-index="2" data-key="k058" data-en="📖 Reading" data-ar="📖 قراءة ومذاكرة" onclick="goToSlide(2)">📖 Reading</button>
-                        <button class="slide-pill" data-index="3" data-key="k059" data-en="🎨 Creative" data-ar="🎨 رسم وتصميم" onclick="goToSlide(3)">🎨 Creative</button>
-                        <button class="slide-pill" data-index="4" data-key="k060" data-en="🪵 Clean Desk" data-ar="🪵 سطح خشبي" onclick="goToSlide(4)">🪵 Clean Desk</button>
+                <div class="slideshow-frame" id="slideshow-frame">
+                    <div class="slide-item active">
+                        <img src="img/slideshow/2.jpeg" alt="Kabotcha Lap Desk - Laptop Setup" loading="eager">
+                    </div>
+                    <div class="slide-item">
+                        <img src="img/slideshow/4.jpeg" alt="Kabotcha Lap Desk - Tablet and Phone Setup" loading="lazy">
+                    </div>
+                    <div class="slide-item">
+                        <img src="img/slideshow/5.jpeg" alt="Kabotcha Lap Desk - Reading and Studying Setup" loading="lazy">
+                    </div>
+                    <div class="slide-item">
+                        <img src="img/slideshow/6.jpeg" alt="Kabotcha Lap Desk - Digital Art &amp; Creative Setup" loading="lazy">
+                    </div>
+                    <div class="slide-item">
+                        <img src="img/slideshow/1.jpeg" alt="Kabotcha Lap Desk - Solid Wood Surface" loading="lazy">
                     </div>
 
-                    <div class="slideshow-frame" id="slideshow-frame">
-                        <div class="slide-item active">
-                            <img src="img/slideshow/2.jpeg" alt="Kabotcha Lap Desk - Laptop Setup" loading="eager">
-                        </div>
-                        <div class="slide-item">
-                            <img src="img/slideshow/4.jpeg" alt="Kabotcha Lap Desk - Tablet and Phone Setup" loading="lazy">
-                        </div>
-                        <div class="slide-item">
-                            <img src="img/slideshow/5.jpeg" alt="Kabotcha Lap Desk - Reading and Studying Setup" loading="lazy">
-                        </div>
-                        <div class="slide-item">
-                            <img src="img/slideshow/6.jpeg" alt="Kabotcha Lap Desk - Digital Art &amp; Creative Setup" loading="lazy">
-                        </div>
-                        <div class="slide-item">
-                            <img src="img/slideshow/1.jpeg" alt="Kabotcha Lap Desk - Solid Wood Surface" loading="lazy">
-                        </div>
+                    <button class="slide-nav prev" onclick="changeSlide(-1)" aria-label="Previous image">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button class="slide-nav next" onclick="changeSlide(1)" aria-label="Next image">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
 
-                        <button class="slide-nav prev" onclick="changeSlide(-1)" aria-label="Previous image">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-                        </button>
-                        <button class="slide-nav next" onclick="changeSlide(1)" aria-label="Next image">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-                        </button>
-
-                        <div class="slideshow-dots">
-                            <span class="slide-dot active" onclick="goToSlide(0)"></span>
-                            <span class="slide-dot" onclick="goToSlide(1)"></span>
-                            <span class="slide-dot" onclick="goToSlide(2)"></span>
-                            <span class="slide-dot" onclick="goToSlide(3)"></span>
-                            <span class="slide-dot" onclick="goToSlide(4)"></span>
-                        </div>
+                    <div class="slideshow-dots">
+                        <span class="slide-dot active" onclick="goToSlide(0)"></span>
+                        <span class="slide-dot" onclick="goToSlide(1)"></span>
+                        <span class="slide-dot" onclick="goToSlide(2)"></span>
+                        <span class="slide-dot" onclick="goToSlide(3)"></span>
+                        <span class="slide-dot" onclick="goToSlide(4)"></span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- 2. Interactive Blueprint View -->
-                <div class="hero-blueprint-wrap" id="hero-blueprint-view">
-                    <div class="explore-container">
-                        <div class="hero-illustration-wrap">
-                            <div class="glow"></div>
-                            <svg class="stand-svg" viewBox="0 -40 600 420" xmlns="http://www.w3.org/2000/svg"
-                                aria-label="Interactive diagram of the Kabotcha lap desk, viewed from above">
-                                <!-- soft base peeking from underneath -->
-                                <g class="hotspot" data-feature="base">
-                                    <rect class="part" x="10" y="6" width="580" height="352" rx="34" fill="var(--cushion)" />
-                                    <rect class="ring" x="4" y="0" width="592" height="364" rx="38" fill="none"
-                                        stroke="var(--sage)" stroke-width="4" />
-                                    <circle class="pulse" cx="26" cy="26" r="6" fill="var(--sage)" />
-                                </g>
+    <div class="problem">
+        <p class="reveal" data-key="k010"
+            data-en="Hot laptop on your legs. Phone sliding off the blanket. Books everywhere. Sound familiar?"
+            data-ar="لابتوب سخن على رجلك، الموبايل بيقع من على السرير، والكتب متبعترة... حاسس بيك.">
+            Hot laptop on your legs. Phone sliding off the blanket. Books everywhere. Sound familiar?
+        </p>
+    </div>
 
-                                <!-- wood top -->
-                                <g class="hotspot active" data-feature="wood">
-                                    <rect class="part" x="20" y="16" width="560" height="332" rx="28" fill="url(#woodGrad)" />
-                                    <path d="M45,140 Q 300,120 555,145" stroke="rgba(0,0,0,0.08)" stroke-width="3"
-                                        fill="none" />
-                                    <path d="M45,230 Q 300,250 555,225" stroke="rgba(0,0,0,0.07)" stroke-width="3"
-                                        fill="none" />
-                                    <!-- faint laptop + mouse hint -->
-                                    <rect x="150" y="150" width="190" height="120" rx="10" fill="rgba(0,0,0,0.05)"
-                                        stroke="rgba(0,0,0,0.14)" stroke-width="2" />
-                                    <rect x="185" y="168" width="120" height="8" rx="4" fill="rgba(0,0,0,0.10)" />
-                                    <rect x="378" y="195" width="42" height="64" rx="20" fill="rgba(0,0,0,0.05)"
-                                        stroke="rgba(0,0,0,0.14)" stroke-width="2" />
-                                    <rect class="ring" x="14" y="10" width="572" height="344" rx="32" fill="none"
-                                        stroke="var(--wood-dark)" stroke-width="4" />
-                                </g>
+    <!-- Dedicated Interactive Explorer Section (Always Visible) -->
+    <section id="interactive-explorer" class="explorer-section">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <div class="eyebrow" data-key="k007" data-en="👆 Tap the highlighted parts to explore"
+                    data-ar="👆 دوس على النقط المضيئة تعرف أكتر">👆 Tap the highlighted parts to explore</div>
+                <h2 data-key="k012" data-en="Everything you need, in one stand" data-ar="كل اللي محتاجه، في حاجة واحدة">
+                    Everything you need, in one stand</h2>
+            </div>
 
-                                <!-- carry handle -->
-                                <g class="hotspot" data-feature="handle">
-                                    <path class="part" d="M300,20 C300,-16 366,-16 366,20" stroke="#4A463D" stroke-width="16"
-                                        fill="none" stroke-linecap="round" />
-                                    <rect class="ring" x="280" y="-24" width="106" height="60" rx="20" fill="none"
-                                        stroke="var(--brass)" stroke-width="3" />
-                                    <circle class="pulse" cx="392" cy="4" r="6" fill="var(--brass)" />
-                                </g>
+            <div class="explorer-grid reveal">
+                <!-- SVG Diagram Stage -->
+                <div class="explorer-visual">
+                    <div class="glow"></div>
+                    <svg class="stand-svg" viewBox="0 -40 600 420" xmlns="http://www.w3.org/2000/svg"
+                        aria-label="Interactive diagram of the Kabotcha lap desk, viewed from above">
+                        <!-- soft base peeking from underneath -->
+                        <g class="hotspot" data-feature="base">
+                            <rect class="part" x="10" y="6" width="580" height="352" rx="34" fill="var(--cushion)" />
+                            <rect class="ring" x="4" y="0" width="592" height="364" rx="38" fill="none"
+                                stroke="var(--sage)" stroke-width="4" />
+                            <circle class="pulse" cx="26" cy="26" r="6" fill="var(--sage)" />
+                        </g>
 
-                                <!-- tablet slot -->
-                                <g class="hotspot" data-feature="tablet">
-                                    <rect class="part" x="70" y="52" width="230" height="26" rx="13" fill="#2E2013"
-                                        transform="rotate(-3 185 65)" />
-                                    <rect class="ring" x="58" y="34" width="256" height="60" rx="20" fill="none"
-                                        stroke="var(--brass)" stroke-width="3" transform="rotate(-3 185 65)" />
-                                    <circle class="pulse" cx="76" cy="48" r="6" fill="var(--brass)" />
-                                </g>
+                        <!-- wood top -->
+                        <g class="hotspot active" data-feature="wood">
+                            <rect class="part" x="20" y="16" width="560" height="332" rx="28" fill="url(#woodGrad)" />
+                            <path d="M45,140 Q 300,120 555,145" stroke="rgba(0,0,0,0.08)" stroke-width="3"
+                                fill="none" />
+                            <path d="M45,230 Q 300,250 555,225" stroke="rgba(0,0,0,0.07)" stroke-width="3"
+                                fill="none" />
+                            <!-- faint laptop + mouse hint -->
+                            <rect x="150" y="150" width="190" height="120" rx="10" fill="rgba(0,0,0,0.05)"
+                                stroke="rgba(0,0,0,0.14)" stroke-width="2" />
+                            <rect x="185" y="168" width="120" height="8" rx="4" fill="rgba(0,0,0,0.10)" />
+                            <rect x="378" y="195" width="42" height="64" rx="20" fill="rgba(0,0,0,0.05)"
+                                stroke="rgba(0,0,0,0.14)" stroke-width="2" />
+                            <rect class="ring" x="14" y="10" width="572" height="344" rx="32" fill="none"
+                                stroke="var(--wood-dark)" stroke-width="4" />
+                        </g>
 
-                                <!-- phone slot -->
-                                <g class="hotspot" data-feature="phone">
-                                    <rect class="part" x="335" y="56" width="110" height="24" rx="12" fill="#2E2013"
-                                        transform="rotate(-3 390 68)" />
-                                    <rect class="ring" x="323" y="38" width="134" height="56" rx="18" fill="none"
-                                        stroke="var(--brass)" stroke-width="3" transform="rotate(-3 390 68)" />
-                                    <circle class="pulse" cx="450" cy="52" r="6" fill="var(--brass)" />
-                                </g>
+                        <!-- carry handle -->
+                        <g class="hotspot" data-feature="handle">
+                            <path class="part" d="M300,20 C300,-16 366,-16 366,20" stroke="#4A463D" stroke-width="16"
+                                fill="none" stroke-linecap="round" />
+                            <rect class="ring" x="280" y="-24" width="106" height="60" rx="20" fill="none"
+                                stroke="var(--brass)" stroke-width="3" />
+                            <circle class="pulse" cx="392" cy="4" r="6" fill="var(--brass)" />
+                        </g>
 
-                                <!-- padded arm rest -->
-                                <g class="hotspot" data-feature="wrist">
-                                    <rect class="part" x="55" y="298" width="490" height="46" rx="23"
-                                        fill="url(#fabricPattern)" />
-                                    <rect class="ring" x="47" y="290" width="506" height="62" rx="31" fill="none"
-                                        stroke="var(--sage)" stroke-width="3" />
-                                    <circle class="pulse" cx="70" cy="321" r="6" fill="var(--sage)" />
-                                </g>
+                        <!-- tablet slot -->
+                        <g class="hotspot" data-feature="tablet">
+                            <rect class="part" x="70" y="52" width="230" height="26" rx="13" fill="#2E2013"
+                                transform="rotate(-3 185 65)" />
+                            <rect class="ring" x="58" y="34" width="256" height="60" rx="20" fill="none"
+                                stroke="var(--brass)" stroke-width="3" transform="rotate(-3 185 65)" />
+                            <circle class="pulse" cx="76" cy="48" r="6" fill="var(--brass)" />
+                        </g>
 
-                                <defs>
-                                    <linearGradient id="woodGrad" x1="0" y1="0" x2="1" y2="1">
-                                        <stop offset="0%" stop-color="#9C6A3E" />
-                                        <stop offset="100%" stop-color="#5C3A22" />
-                                    </linearGradient>
-                                    <pattern id="fabricPattern" width="10" height="10" patternTransform="rotate(45)"
-                                        patternUnits="userSpaceOnUse">
-                                        <rect width="10" height="10" fill="#57534A" />
-                                        <line x1="0" y1="0" x2="0" y2="10" stroke="#6B665A" stroke-width="2" />
-                                    </pattern>
-                                </defs>
-                            </svg>
-                            <p class="tap-hint" data-key="k007" data-en="👆 Tap the highlighted parts to explore"
-                                data-ar="👆 دوس على النقط المضيئة تعرف أكتر">👆 Tap the highlighted parts to explore</p>
+                        <!-- phone slot -->
+                        <g class="hotspot" data-feature="phone">
+                            <rect class="part" x="335" y="56" width="110" height="24" rx="12" fill="#2E2013"
+                                transform="rotate(-3 390 68)" />
+                            <rect class="ring" x="323" y="38" width="134" height="56" rx="18" fill="none"
+                                stroke="var(--brass)" stroke-width="3" transform="rotate(-3 390 68)" />
+                            <circle class="pulse" cx="450" cy="52" r="6" fill="var(--brass)" />
+                        </g>
+
+                        <!-- padded arm rest -->
+                        <g class="hotspot" data-feature="wrist">
+                            <rect class="part" x="55" y="298" width="490" height="46" rx="23"
+                                fill="url(#fabricPattern)" />
+                            <rect class="ring" x="47" y="290" width="506" height="62" rx="31" fill="none"
+                                stroke="var(--sage)" stroke-width="3" />
+                            <circle class="pulse" cx="70" cy="321" r="6" fill="var(--sage)" />
+                        </g>
+
+                        <defs>
+                            <linearGradient id="woodGrad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#9C6A3E" />
+                                <stop offset="100%" stop-color="#5C3A22" />
+                            </linearGradient>
+                            <pattern id="fabricPattern" width="10" height="10" patternTransform="rotate(45)"
+                                patternUnits="userSpaceOnUse">
+                                <rect width="10" height="10" fill="#57534A" />
+                                <line x1="0" y1="0" x2="0" y2="10" stroke="#6B665A" stroke-width="2" />
+                            </pattern>
+                        </defs>
+                    </svg>
+                </div>
+
+                <!-- Feature Inspector Dock -->
+                <div class="explorer-panel">
+                    <div class="feature-selector-pills">
+                        <button class="feature-pill active" data-feature="wood">🪵 Wood Surface</button>
+                        <button class="feature-pill" data-feature="tablet">📲 Tablet Slot</button>
+                        <button class="feature-pill" data-feature="phone">📱 Phone Slot</button>
+                        <button class="feature-pill" data-feature="handle">🎒 Carry Handle</button>
+                        <button class="feature-pill" data-feature="wrist">⌨️ Arm Rest</button>
+                        <button class="feature-pill" data-feature="base">🛋️ Cushion Base</button>
+                    </div>
+
+                    <div class="info-card" id="info-card">
+                        <div class="info-badge" id="info-badge">
+                            <span class="badge-dot"></span>
+                            <span class="badge-text" id="badge-text">Selected Feature</span>
                         </div>
-
-                        <!-- dynamic connector line drawn via JS -->
-                        <div class="dynamic-connector-line" id="dynamic-connector-line"></div>
-
-                        <div class="info-card" id="info-card">
-                            <div class="info-content">
-                                <h3 id="info-title" data-key="k008" data-en="Solid wood surface" data-ar="سطح خشبي طبيعي">Solid wood surface</h3>
-                                <p id="info-desc" data-key="k009"
-                                    data-en="A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books."
-                                    data-ar="سطح خشب واسع وناعم يسع اللابتوب، الماوس، أو كومة كتب.">
-                                    A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books.
-                                </p>
-                            </div>
+                        <div class="info-content">
+                            <h3 id="info-title">Solid wood surface</h3>
+                            <p id="info-desc">
+                                A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1970,6 +1963,9 @@
                 const val = (overrideVal && overrideVal.trim()) ? overrideVal : el.dataset[lang];
                 if (val !== undefined) el.textContent = val;
             });
+            if (typeof selectFeature === 'function') {
+                selectFeature(currentFeature);
+            }
             updateWaLinks();
         }
 
@@ -2162,34 +2158,11 @@
         }
 
         // ---------------------------------------------------------------
-        // HERO SHOWCASE & SLIDESHOW LOGIC
+        // HERO SLIDESHOW LOGIC
         // ---------------------------------------------------------------
         let currentSlide = 0;
         const totalSlides = 5;
         let slideInterval = null;
-
-        function switchHeroView(mode) {
-            const photosWrap = document.getElementById('hero-slideshow-view');
-            const blueprintWrap = document.getElementById('hero-blueprint-view');
-            const btnPhotos = document.getElementById('view-photos-btn');
-            const btnBlueprint = document.getElementById('view-blueprint-btn');
-
-            if (mode === 'photos') {
-                photosWrap.classList.add('active');
-                blueprintWrap.classList.remove('active');
-                btnPhotos.classList.add('active');
-                btnBlueprint.classList.remove('active');
-                startSlideTimer();
-            } else {
-                photosWrap.classList.remove('active');
-                blueprintWrap.classList.add('active');
-                btnPhotos.classList.remove('active');
-                btnBlueprint.classList.add('active');
-                stopSlideTimer();
-                const defaultActive = document.querySelector('.hotspot.active');
-                if (defaultActive) triggerCardAnim(defaultActive);
-            }
-        }
 
         function updateSlideUI() {
             const slides = document.querySelectorAll('.slide-item');
@@ -2256,27 +2229,95 @@
 
         startSlideTimer();
 
-        // Keep connector in place on window resize if blueprint is open
-        window.addEventListener('resize', () => {
-            const blueprintWrap = document.getElementById('hero-blueprint-view');
-            if (blueprintWrap && blueprintWrap.classList.contains('active')) {
-                const active = document.querySelector('.hotspot.active');
-                if (active) {
-                    const anchor = active.querySelector('.pulse') || active.querySelector('.part');
-                    if (anchor && typeof exploreContainer !== 'undefined' && exploreContainer) {
-                        const containerRect = exploreContainer.getBoundingClientRect();
-                        const anchorRect = anchor.getBoundingClientRect();
-                        const cardRect = infoCard.getBoundingClientRect();
-                        const x = (anchorRect.left + anchorRect.width / 2) - containerRect.left;
-                        const y = (anchorRect.top + anchorRect.height / 2) - containerRect.top;
-                        const cardTop = cardRect.top - containerRect.top;
-                        dynamicConnector.style.left = `${x}px`;
-                        dynamicConnector.style.top = `${y}px`;
-                        dynamicConnector.style.height = `${Math.max(0, cardTop - y)}px`;
-                    }
-                }
+        // ---------------------------------------------------------------
+        // INTERACTIVE DESK EXPLORER LOGIC
+        // ---------------------------------------------------------------
+        const featureInfo = {
+            wood: {
+                badge: { en: "Wood Top", ar: "سطح الخشب" },
+                en: { title: "Solid wood surface", desc: "A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books." },
+                ar: { title: "سطح خشبي طبيعي", desc: "سطح خشب واسع وناعم يسع اللابتوب، الماوس، أو كومة كتب." }
+            },
+            tablet: {
+                badge: { en: "Tablet Slot", ar: "فتحة التابلت" },
+                en: { title: "Tablet slot", desc: "A long slot near the back edge props your tablet upright — great for reading, video calls, or a second screen." },
+                ar: { title: "فتحة للتابلت", desc: "فتحة طويلة عند الحافة الخلفية تسند التابلت واقف، تظبط للقراءة أو المكالمات أو كشاشة تانية." }
+            },
+            phone: {
+                badge: { en: "Phone Slot", ar: "فتحة الموبايل" },
+                en: { title: "Phone slot", desc: "A shorter slot right next to it holds your phone upright, hands-free." },
+                ar: { title: "فتحة للموبايل", desc: "فتحة أقصر جنبها تسند الموبايل واقف من غير ما تمسكه." }
+            },
+            handle: {
+                badge: { en: "Carry Handle", ar: "مقبض الحمل" },
+                en: { title: "Built-in carry handle", desc: "A fabric handle at the top lets you carry it around the house like a small bag." },
+                ar: { title: "مقبض حمل مدمج", desc: "مقبض قماش في الأعلى يخليك تنقله في البيت زي الشنطة." }
+            },
+            wrist: {
+                badge: { en: "Arm Rest", ar: "مسند الذراع" },
+                en: { title: "Padded arm rest", desc: "A cushioned fabric bar along the front edge keeps your wrists comfortable while you type or write." },
+                ar: { title: "مسند ذراع مبطّن", desc: "قطعة قماش مبطنة على الحافة الأمامية تريح رسغك وأنت بتكتب." }
+            },
+            base: {
+                badge: { en: "Base Cushion", ar: "القاعدة المبطنة" },
+                en: { title: "Soft base underneath", desc: "A cushioned underside that molds to your lap or the mattress and keeps everything steady." },
+                ar: { title: "قاعدة مبطنة من تحت", desc: "قاعدة مبطنة من تحت بتتلم مع رجلك أو الفرشة وتخلي كل حاجة ثابتة." }
             }
+        };
+
+        let currentFeature = 'wood';
+
+        function selectFeature(featureKey) {
+            currentFeature = featureKey;
+            const hotspots = document.querySelectorAll('.hotspot');
+            const pills = document.querySelectorAll('.feature-pill');
+            const infoCard = document.getElementById('info-card');
+            const infoTitle = document.getElementById('info-title');
+            const infoDesc = document.getElementById('info-desc');
+            const badgeText = document.getElementById('badge-text');
+
+            // Sync active hotspot
+            hotspots.forEach(h => {
+                h.classList.toggle('active', h.dataset.feature === featureKey);
+            });
+
+            // Sync active pill
+            pills.forEach(p => {
+                p.classList.toggle('active', p.dataset.feature === featureKey);
+            });
+
+            // Update content
+            const data = featureInfo[featureKey];
+            if (data) {
+                if (badgeText) badgeText.textContent = data.badge[currentLang] || data.badge.en;
+                if (infoTitle) infoTitle.textContent = data[currentLang].title;
+                if (infoDesc) infoDesc.textContent = data[currentLang].desc;
+            }
+
+            // Animate card pop & shimmer
+            if (infoCard) {
+                infoCard.classList.remove('flash');
+                void infoCard.offsetWidth;
+                infoCard.classList.add('flash');
+            }
+        }
+
+        // Attach listeners to SVG hotspots
+        document.querySelectorAll('.hotspot').forEach(h => {
+            h.addEventListener('click', () => {
+                selectFeature(h.dataset.feature);
+            });
         });
+
+        // Attach listeners to feature selector pills
+        document.querySelectorAll('.feature-pill').forEach(p => {
+            p.addEventListener('click', () => {
+                selectFeature(p.dataset.feature);
+            });
+        });
+
+        // Initialize default active feature on load
+        selectFeature('wood');
 
         // scroll reveal
         const io = new IntersectionObserver((entries) => {
