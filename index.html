@@ -1101,6 +1101,307 @@
         html[dir="rtl"] .eyebrow::before {
             order: 2;
         }
+
+        /* ===============================================================
+           MOBILE & TABLET RESPONSIVE SYSTEM (Proportions & Volumes Fix)
+           =============================================================== */
+
+        @media (max-width: 900px) {
+            .hero {
+                padding-top: 36px;
+                padding-bottom: 36px;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .quality-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .feat-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --radius-lg: 20px;
+                --radius-md: 14px;
+            }
+
+            .wrap {
+                padding: 0 16px;
+            }
+
+            section {
+                padding: 48px 0;
+            }
+
+            /* NAV */
+            header.nav {
+                background: rgba(238, 230, 216, 0.95);
+            }
+            .nav-inner {
+                padding: 10px 16px;
+                gap: 10px;
+            }
+            .brand img {
+                height: 38px;
+            }
+            .nav-right {
+                gap: 8px;
+            }
+            .lang-toggle button {
+                padding: 6px 11px;
+                font-size: 12px;
+            }
+            .btn-sm {
+                padding: 8px 14px;
+                font-size: 12px;
+            }
+
+            /* HERO */
+            .hero {
+                padding-top: 18px;
+                padding-bottom: 24px;
+            }
+            .hero-grid {
+                gap: 22px;
+            }
+            .eyebrow {
+                font-size: 11px;
+                letter-spacing: 0.12em;
+                margin-bottom: 10px;
+            }
+            .hero h1 {
+                font-size: clamp(26px, 7.5vw, 36px);
+                line-height: 1.15;
+            }
+            html[dir="rtl"] .hero h1 {
+                font-size: clamp(28px, 8.5vw, 40px);
+                line-height: 1.25;
+            }
+            .hero p.lead {
+                margin-top: 10px;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+            .hero-ctas {
+                margin-top: 18px;
+                gap: 10px;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-ctas .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 12px 18px;
+                font-size: 14.5px;
+            }
+
+            /* HERO SHOWCASE & SLIDESHOW */
+            .hero-view-toggle {
+                width: 100%;
+                display: flex;
+                margin-bottom: 10px;
+            }
+            .view-toggle-btn {
+                flex: 1;
+                justify-content: center;
+                padding: 7px 10px;
+                font-size: 12px;
+            }
+            .slideshow-pills {
+                margin-bottom: 8px;
+                padding-bottom: 4px;
+                gap: 6px;
+            }
+            .slide-pill {
+                padding: 6px 12px;
+                font-size: 11.5px;
+            }
+            .slideshow-frame {
+                border-radius: 18px;
+            }
+            .slide-nav {
+                width: 34px;
+                height: 34px;
+            }
+            .slide-nav.prev {
+                left: 8px;
+            }
+            .slide-nav.next {
+                right: 8px;
+            }
+            .slide-nav svg {
+                width: 16px;
+                height: 16px;
+            }
+            .slideshow-dots {
+                bottom: 10px;
+                padding: 3px 8px;
+                gap: 5px;
+            }
+            .slide-dot {
+                width: 6px;
+                height: 6px;
+            }
+            .slide-dot.active {
+                width: 18px;
+            }
+
+            /* BLUEPRINT & INFO CARD */
+            .tap-hint {
+                font-size: 12px;
+                margin-top: 8px;
+            }
+            .info-card {
+                padding: 14px 16px;
+                margin-top: 6px;
+                min-height: auto;
+                border-radius: 14px;
+            }
+            .info-card h3 {
+                font-size: 16px;
+                margin-bottom: 4px;
+            }
+            .info-card p {
+                font-size: 13.5px;
+                line-height: 1.45;
+            }
+
+            /* PROBLEM STRIP */
+            .problem {
+                padding: 32px 0;
+            }
+            .problem p {
+                font-size: 16.5px;
+                padding: 0 16px;
+                line-height: 1.45;
+            }
+
+            /* SECTION HEADINGS */
+            .section-head {
+                margin-bottom: 24px;
+            }
+            .section-head h2 {
+                font-size: 24px;
+            }
+
+            /* FEATURES */
+            .feat-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .feat-card {
+                padding: 18px 18px;
+                border-radius: 14px;
+            }
+            .feat-icon {
+                width: 38px;
+                height: 38px;
+                margin-bottom: 12px;
+            }
+            .feat-card h3 {
+                font-size: 16.5px;
+                margin-bottom: 4px;
+            }
+            .feat-card p {
+                font-size: 13.5px;
+                line-height: 1.45;
+            }
+
+            /* QUALITY / MATERIALS */
+            .grain-card {
+                aspect-ratio: 16 / 10;
+                border-radius: 18px;
+            }
+            .quality h2 {
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
+            .quality p {
+                font-size: 14.5px;
+            }
+            .quality-list {
+                margin-top: 16px;
+                gap: 10px;
+            }
+            .quality-list li {
+                font-size: 13.5px;
+            }
+
+            /* SOCIAL BANNER */
+            .social-banner {
+                padding: 36px 18px;
+                border-radius: 20px;
+            }
+            .social-banner .handle {
+                font-size: 26px;
+                margin: 6px 0 10px;
+            }
+            .social-banner .lead-sm {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+            .social-pills {
+                gap: 8px;
+            }
+            .social-pill {
+                padding: 9px 16px;
+                font-size: 13px;
+            }
+
+            /* CTA BANNER */
+            .cta-banner {
+                padding: 36px 18px;
+                border-radius: 20px;
+            }
+            .cta-banner h2 {
+                font-size: 24px;
+            }
+            .cta-banner p {
+                font-size: 14px;
+                margin: 10px 0 18px;
+            }
+
+            /* FAQ */
+            .faq-item {
+                border-radius: 14px;
+                margin-bottom: 10px;
+            }
+            .faq-item summary {
+                padding: 15px 16px;
+                font-size: 14.5px;
+            }
+            .faq-item p {
+                padding: 0 16px 15px;
+                font-size: 13.5px;
+                line-height: 1.45;
+            }
+
+            /* FOOTER */
+            footer {
+                padding: 36px 0 20px;
+            }
+            footer .brand img {
+                height: 44px;
+            }
+            .footer-top {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 6px;
+                font-size: 12px;
+                padding-top: 16px;
+            }
+        }
     </style>
 </head>
 
