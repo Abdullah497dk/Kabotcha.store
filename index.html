@@ -30,7 +30,9 @@
             --maxw: 1180px;
         }
 
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
         }
 
@@ -238,6 +240,7 @@
                 padding-top: 24px;
                 padding-bottom: 24px;
             }
+
             .wrap {
                 padding: 0 18px;
             }
@@ -251,7 +254,7 @@
             width: 100%;
         }
 
-        .hero-grid > div {
+        .hero-grid>div {
             min-width: 0;
             max-width: 100%;
         }
@@ -318,6 +321,7 @@
                 flex-direction: column;
                 align-items: stretch;
             }
+
             .hero-ctas .btn {
                 justify-content: center;
                 width: 100%;
@@ -510,7 +514,7 @@
             width: 100%;
         }
 
-        .explorer-grid > div {
+        .explorer-grid>div {
             min-width: 0;
             max-width: 100%;
         }
@@ -555,8 +559,17 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: .55; transform: scale(1); }
-            50%       { opacity: 1;   transform: scale(1.5); }
+
+            0%,
+            100% {
+                opacity: .55;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
         }
 
         .hotspot .part {
@@ -570,9 +583,7 @@
 
         .hotspot.active .part {
             filter:
-                drop-shadow(0 0 8px rgba(176,138,78,.9))
-                drop-shadow(0 0 18px rgba(176,138,78,.45))
-                brightness(1.15);
+                drop-shadow(0 0 8px rgba(176, 138, 78, .9)) drop-shadow(0 0 18px rgba(176, 138, 78, .45)) brightness(1.15);
         }
 
         .ring {
@@ -586,9 +597,20 @@
         }
 
         @keyframes ring-ping {
-            0%   { opacity: 0; transform: scale(.85); }
-            60%  { opacity: 1; transform: scale(1.06); }
-            100% { opacity: 1; transform: scale(1); }
+            0% {
+                opacity: 0;
+                transform: scale(.85);
+            }
+
+            60% {
+                opacity: 1;
+                transform: scale(1.06);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         /* Explorer Panel & Feature Pills */
@@ -639,7 +661,7 @@
             border: 1.5px solid var(--brass);
             border-radius: var(--radius-md);
             padding: 24px;
-            box-shadow: 0 10px 30px -18px rgba(59, 39, 23, 0.35), 0 0 0 4px rgba(176,138,78,.08);
+            box-shadow: 0 10px 30px -18px rgba(59, 39, 23, 0.35), 0 0 0 4px rgba(176, 138, 78, .08);
             position: relative;
             overflow: hidden;
         }
@@ -648,7 +670,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(120deg, transparent 30%, rgba(176,138,78,.15) 50%, transparent 70%);
+            background: linear-gradient(120deg, transparent 30%, rgba(176, 138, 78, .15) 50%, transparent 70%);
             background-size: 200% 100%;
             background-position: 200% 0;
             pointer-events: none;
@@ -659,8 +681,13 @@
         }
 
         @keyframes shimmer {
-            from { background-position: 200% 0; }
-            to   { background-position: -200% 0; }
+            from {
+                background-position: 200% 0;
+            }
+
+            to {
+                background-position: -200% 0;
+            }
         }
 
         .info-badge {
@@ -689,12 +716,19 @@
         }
 
         .info-card.flash .info-content {
-            animation: card-pop .35s cubic-bezier(.22,.68,0,1.2) forwards;
+            animation: card-pop .35s cubic-bezier(.22, .68, 0, 1.2) forwards;
         }
 
         @keyframes card-pop {
-            0%   { opacity: 0; transform: translateY(8px) scale(.98); }
-            100% { opacity: 1; transform: translateY(0)   scale(1); }
+            0% {
+                opacity: 0;
+                transform: translateY(8px) scale(.98);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .info-content {
@@ -716,8 +750,13 @@
         }
 
         @media (prefers-reduced-motion:reduce) {
-            .hotspot .pulse { animation: none; }
-            .hotspot.active .ring { animation: none; }
+            .hotspot .pulse {
+                animation: none;
+            }
+
+            .hotspot.active .ring {
+                animation: none;
+            }
         }
 
         /* ---------- PROBLEM STRIP ---------- */
@@ -1074,8 +1113,15 @@
         }
 
         @keyframes zoomIn {
-            from { transform: scale(0.92); opacity: 0; }
-            to   { transform: scale(1);    opacity: 1; }
+            from {
+                transform: scale(0.92);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .lightbox-content img {
@@ -1394,14 +1440,17 @@
                 padding-top: 36px;
                 padding-bottom: 36px;
             }
+
             .hero-grid {
                 grid-template-columns: 1fr;
                 gap: 32px;
             }
+
             .quality-grid {
                 grid-template-columns: 1fr;
                 gap: 32px;
             }
+
             .feat-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
@@ -1426,20 +1475,25 @@
             header.nav {
                 background: rgba(238, 230, 216, 0.95);
             }
+
             .nav-inner {
                 padding: 10px 16px;
                 gap: 10px;
             }
+
             .brand img {
                 height: 38px;
             }
+
             .nav-right {
                 gap: 8px;
             }
+
             .lang-toggle button {
                 padding: 6px 11px;
                 font-size: 12px;
             }
+
             .btn-sm {
                 padding: 8px 14px;
                 font-size: 12px;
@@ -1452,33 +1506,40 @@
                 overflow: hidden;
                 width: 100%;
             }
+
             .hero-grid {
                 gap: 22px;
                 width: 100%;
             }
-            .hero-grid > div {
+
+            .hero-grid>div {
                 min-width: 0;
                 max-width: 100%;
                 width: 100%;
             }
+
             .eyebrow {
                 font-size: 11px;
                 letter-spacing: 0.12em;
                 margin-bottom: 10px;
             }
+
             .hero h1 {
                 font-size: clamp(26px, 7.5vw, 36px);
                 line-height: 1.15;
             }
+
             html[dir="rtl"] .hero h1 {
                 font-size: clamp(28px, 8.5vw, 40px);
                 line-height: 1.25;
             }
+
             .hero p.lead {
                 margin-top: 10px;
                 font-size: 15px;
                 line-height: 1.5;
             }
+
             .hero-ctas {
                 margin-top: 18px;
                 gap: 10px;
@@ -1487,6 +1548,7 @@
                 width: 100%;
                 max-width: 100%;
             }
+
             .hero-ctas .btn {
                 width: 100%;
                 max-width: 100%;
@@ -1503,17 +1565,20 @@
                 min-width: 0;
                 overflow: hidden;
             }
+
             .hero-view-toggle {
                 width: 100%;
                 display: flex;
                 margin-bottom: 10px;
             }
+
             .view-toggle-btn {
                 flex: 1;
                 justify-content: center;
                 padding: 7px 10px;
                 font-size: 12px;
             }
+
             .slideshow-pills {
                 margin-bottom: 8px;
                 padding-bottom: 6px;
@@ -1521,11 +1586,13 @@
                 max-width: 100%;
                 width: 100%;
             }
+
             .slide-pill {
                 padding: 6px 12px;
                 font-size: 11.5px;
                 flex-shrink: 0;
             }
+
             .slideshow-frame {
                 border-radius: 18px;
                 width: 100%;
@@ -1533,29 +1600,36 @@
                 aspect-ratio: 1 / 1;
                 overflow: hidden;
             }
+
             .slide-nav {
                 width: 34px;
                 height: 34px;
             }
+
             .slide-nav.prev {
                 left: 8px;
             }
+
             .slide-nav.next {
                 right: 8px;
             }
+
             .slide-nav svg {
                 width: 16px;
                 height: 16px;
             }
+
             .slideshow-dots {
                 bottom: 10px;
                 padding: 3px 8px;
                 gap: 5px;
             }
+
             .slide-dot {
                 width: 6px;
                 height: 6px;
             }
+
             .slide-dot.active {
                 width: 18px;
             }
@@ -1565,30 +1639,37 @@
                 grid-template-columns: 1fr;
                 gap: 18px;
             }
+
             .explorer-visual {
                 padding: 14px;
                 border-radius: 18px;
             }
+
             .feature-selector-pills {
                 gap: 6px;
             }
+
             .feature-pill {
                 padding: 6px 12px;
                 font-size: 12px;
             }
+
             .info-card {
                 padding: 16px 18px;
                 border-radius: 14px;
             }
+
             .info-badge {
                 font-size: 10.5px;
                 padding: 3px 8px;
                 margin-bottom: 8px;
             }
+
             .info-card h3 {
                 font-size: 17px;
                 margin-bottom: 4px;
             }
+
             .info-card p {
                 font-size: 13.5px;
                 line-height: 1.45;
@@ -1598,6 +1679,7 @@
             .problem {
                 padding: 32px 0;
             }
+
             .problem p {
                 font-size: 16.5px;
                 padding: 0 16px;
@@ -1608,6 +1690,7 @@
             .section-head {
                 margin-bottom: 24px;
             }
+
             .section-head h2 {
                 font-size: 24px;
             }
@@ -1617,19 +1700,23 @@
                 grid-template-columns: 1fr;
                 gap: 12px;
             }
+
             .feat-card {
                 padding: 18px 18px;
                 border-radius: 14px;
             }
+
             .feat-icon {
                 width: 38px;
                 height: 38px;
                 margin-bottom: 12px;
             }
+
             .feat-card h3 {
                 font-size: 16.5px;
                 margin-bottom: 4px;
             }
+
             .feat-card p {
                 font-size: 13.5px;
                 line-height: 1.45;
@@ -1640,17 +1727,21 @@
                 aspect-ratio: 4 / 3;
                 border-radius: 18px;
             }
+
             .quality h2 {
                 font-size: 24px;
                 margin-bottom: 12px;
             }
+
             .quality p {
                 font-size: 14.5px;
             }
+
             .quality-list {
                 margin-top: 16px;
                 gap: 10px;
             }
+
             .quality-list li {
                 font-size: 13.5px;
             }
@@ -1662,32 +1753,40 @@
                 width: 100%;
                 max-width: 100%;
             }
+
             .gallery-nav-btns {
                 display: none;
             }
+
             .gallery-swipe-hint {
                 display: block;
             }
+
             .gallery-track-wrap {
                 margin: 0 -16px;
                 padding: 6px 16px 14px;
                 max-width: calc(100% + 32px);
                 overflow: hidden;
             }
+
             .gallery-track {
                 max-width: 100%;
                 width: 100%;
             }
+
             .gallery-card {
                 flex: 0 0 72vw;
                 border-radius: 16px;
             }
+
             .lightbox-nav.prev {
                 left: 10px;
             }
+
             .lightbox-nav.next {
                 right: 10px;
             }
+
             .lightbox-close {
                 top: 16px;
                 right: 16px;
@@ -1698,17 +1797,21 @@
                 padding: 36px 18px;
                 border-radius: 20px;
             }
+
             .social-banner .handle {
                 font-size: 26px;
                 margin: 6px 0 10px;
             }
+
             .social-banner .lead-sm {
                 font-size: 14px;
                 margin-bottom: 20px;
             }
+
             .social-pills {
                 gap: 8px;
             }
+
             .social-pill {
                 padding: 9px 16px;
                 font-size: 13px;
@@ -1719,9 +1822,11 @@
                 padding: 36px 18px;
                 border-radius: 20px;
             }
+
             .cta-banner h2 {
                 font-size: 24px;
             }
+
             .cta-banner p {
                 font-size: 14px;
                 margin: 10px 0 18px;
@@ -1732,10 +1837,12 @@
                 border-radius: 14px;
                 margin-bottom: 10px;
             }
+
             .faq-item summary {
                 padding: 15px 16px;
                 font-size: 14.5px;
             }
+
             .faq-item p {
                 padding: 0 16px 15px;
                 font-size: 13.5px;
@@ -1746,14 +1853,17 @@
             footer {
                 padding: 36px 0 20px;
             }
+
             footer .brand img {
                 height: 44px;
             }
+
             .footer-top {
                 flex-direction: column;
                 gap: 16px;
                 align-items: flex-start;
             }
+
             .footer-bottom {
                 flex-direction: column;
                 gap: 6px;
@@ -1806,11 +1916,16 @@
             <!-- Hero Right Column: Permanent Lifestyle Slideshow -->
             <div class="hero-slideshow-container">
                 <div class="slideshow-pills">
-                    <button class="slide-pill active" data-index="0" data-key="k056" data-en="💻 Laptop" data-ar="💻 لابتوب" onclick="goToSlide(0)">💻 Laptop</button>
-                    <button class="slide-pill" data-index="1" data-key="k057" data-en="📱 Tablet &amp; Phone" data-ar="📱 تابلت وموبايل" onclick="goToSlide(1)">📱 Tablet &amp; Phone</button>
-                    <button class="slide-pill" data-index="2" data-key="k058" data-en="📖 Reading" data-ar="📖 قراءة ومذاكرة" onclick="goToSlide(2)">📖 Reading</button>
-                    <button class="slide-pill" data-index="3" data-key="k059" data-en="🎨 Creative" data-ar="🎨 رسم وتصميم" onclick="goToSlide(3)">🎨 Creative</button>
-                    <button class="slide-pill" data-index="4" data-key="k060" data-en="🪵 Clean Desk" data-ar="🪵 سطح خشبي" onclick="goToSlide(4)">🪵 Clean Desk</button>
+                    <button class="slide-pill active" data-index="0" data-key="k056" data-en="💻 Laptop"
+                        data-ar="💻 لابتوب" onclick="goToSlide(0)">💻 Laptop</button>
+                    <button class="slide-pill" data-index="1" data-key="k057" data-en="📱 Tablet &amp; Phone"
+                        data-ar="📱 تابلت وموبايل" onclick="goToSlide(1)">📱 Tablet &amp; Phone</button>
+                    <button class="slide-pill" data-index="2" data-key="k058" data-en="📖 Reading"
+                        data-ar="📖 قراءة ومذاكرة" onclick="goToSlide(2)">📖 Reading</button>
+                    <button class="slide-pill" data-index="3" data-key="k059" data-en="🎨 Creative"
+                        data-ar="🎨 رسم وتصميم" onclick="goToSlide(3)">🎨 Creative</button>
+                    <button class="slide-pill" data-index="4" data-key="k060" data-en="🪵 Clean Desk"
+                        data-ar="🪵 سطح خشبي" onclick="goToSlide(4)">🪵 Clean Desk</button>
                 </div>
 
                 <div class="slideshow-frame" id="slideshow-frame">
@@ -1821,20 +1936,28 @@
                         <img src="img/slideshow/4.jpeg" alt="Kabotcha Lap Desk - Tablet and Phone Setup" loading="lazy">
                     </div>
                     <div class="slide-item">
-                        <img src="img/slideshow/5.jpeg" alt="Kabotcha Lap Desk - Reading and Studying Setup" loading="lazy">
+                        <img src="img/slideshow/5.jpeg" alt="Kabotcha Lap Desk - Reading and Studying Setup"
+                            loading="lazy">
                     </div>
                     <div class="slide-item">
-                        <img src="img/slideshow/6.jpeg" alt="Kabotcha Lap Desk - Digital Art &amp; Creative Setup" loading="lazy">
+                        <img src="img/slideshow/6.jpeg" alt="Kabotcha Lap Desk - Digital Art &amp; Creative Setup"
+                            loading="lazy">
                     </div>
                     <div class="slide-item">
                         <img src="img/slideshow/1.jpeg" alt="Kabotcha Lap Desk - Solid Wood Surface" loading="lazy">
                     </div>
 
                     <button class="slide-nav prev" onclick="changeSlide(-1)" aria-label="Previous image">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
                     </button>
                     <button class="slide-nav next" onclick="changeSlide(1)" aria-label="Next image">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
                     </button>
 
                     <div class="slideshow-dots">
@@ -1968,7 +2091,8 @@
                         <div class="info-content">
                             <h3 id="info-title">Solid wood surface</h3>
                             <p id="info-desc">
-                                A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books.
+                                A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of
+                                books.
                             </p>
                         </div>
                     </div>
@@ -2112,8 +2236,10 @@
         <div class="wrap">
             <div class="gallery-header-row reveal">
                 <div class="section-head" style="margin-bottom:0;">
-                    <div class="eyebrow" data-key="k061" data-en="In Real Homes" data-ar="معرض الصور">In Real Homes</div>
-                    <h2 data-key="k062" data-en="Made for everyday living" data-ar="في كل ركن من بيتك">Made for everyday living</h2>
+                    <div class="eyebrow" data-key="k061" data-en="In Real Homes" data-ar="معرض الصور">In Real Homes
+                    </div>
+                    <h2 data-key="k062" data-en="Made for everyday living" data-ar="في كل ركن من بيتك">Made for everyday
+                        living</h2>
                     <p class="gallery-sub" data-key="k063"
                         data-en="Real setups, real moments. From morning coffee to late-night study sessions."
                         data-ar="لحظات حقيقية واستخدامات يومية، من قهوة الصباح لمذاكرة بالليل.">
@@ -2123,75 +2249,110 @@
                 <!-- Desktop Nav Controls -->
                 <div class="gallery-nav-btns">
                     <button class="gallery-arrow prev" onclick="scrollGallery(-1)" aria-label="Scroll gallery left">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
                     </button>
                     <button class="gallery-arrow next" onclick="scrollGallery(1)" aria-label="Scroll gallery right">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
                     </button>
                 </div>
             </div>
 
             <!-- Mobile Swipe Hint -->
-            <div class="gallery-swipe-hint" data-key="k064" data-en="👉 Swipe to explore gallery" data-ar="👉 اسحب لمشاهدة الصور">
+            <div class="gallery-swipe-hint" data-key="k064" data-en="👉 Swipe to explore gallery"
+                data-ar="👉 اسحب لمشاهدة الصور">
                 👉 Swipe to explore gallery
             </div>
 
             <!-- Horizontal Snap Track Carousel -->
             <div class="gallery-track-wrap reveal">
                 <div class="gallery-track" id="gallery-track">
-                    <div class="gallery-card" onclick="openLightbox('img/gallery/1.jpeg', 'Kabotcha Lap Desk - Setup 1')">
+                    <div class="gallery-card"
+                        onclick="openLightbox('img/gallery/1.jpeg', 'Kabotcha Lap Desk - Setup 1')">
                         <img src="img/gallery/1.jpeg" alt="Kabotcha Lap Desk Setup" loading="lazy">
                         <div class="gallery-card-overlay">
                             <span class="gallery-zoom-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
                             </span>
                         </div>
                     </div>
-                    <div class="gallery-card" onclick="openLightbox('img/gallery/2.jpeg', 'Kabotcha Lap Desk - Setup 2')">
+                    <div class="gallery-card"
+                        onclick="openLightbox('img/gallery/2.jpeg', 'Kabotcha Lap Desk - Setup 2')">
                         <img src="img/gallery/2.jpeg" alt="Kabotcha Lap Desk Setup" loading="lazy">
                         <div class="gallery-card-overlay">
                             <span class="gallery-zoom-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
                             </span>
                         </div>
                     </div>
-                    <div class="gallery-card" onclick="openLightbox('img/gallery/3.jpeg', 'Kabotcha Lap Desk - Setup 3')">
+                    <div class="gallery-card"
+                        onclick="openLightbox('img/gallery/3.jpeg', 'Kabotcha Lap Desk - Setup 3')">
                         <img src="img/gallery/3.jpeg" alt="Kabotcha Lap Desk Setup" loading="lazy">
                         <div class="gallery-card-overlay">
                             <span class="gallery-zoom-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
                             </span>
                         </div>
                     </div>
-                    <div class="gallery-card" onclick="openLightbox('img/gallery/4.jpeg', 'Kabotcha Lap Desk - Setup 4')">
+                    <div class="gallery-card"
+                        onclick="openLightbox('img/gallery/4.jpeg', 'Kabotcha Lap Desk - Setup 4')">
                         <img src="img/gallery/4.jpeg" alt="Kabotcha Lap Desk Setup" loading="lazy">
                         <div class="gallery-card-overlay">
                             <span class="gallery-zoom-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
                             </span>
                         </div>
                     </div>
-                    <div class="gallery-card" onclick="openLightbox('img/gallery/6.jpeg', 'Kabotcha Lap Desk - Setup 5')">
+                    <div class="gallery-card"
+                        onclick="openLightbox('img/gallery/6.jpeg', 'Kabotcha Lap Desk - Setup 5')">
                         <img src="img/gallery/6.jpeg" alt="Kabotcha Lap Desk Setup" loading="lazy">
                         <div class="gallery-card-overlay">
                             <span class="gallery-zoom-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
                             </span>
                         </div>
                     </div>
-                    <div class="gallery-card" onclick="openLightbox('img/gallery/15.jpeg', 'Kabotcha Lap Desk - Setup 6')">
+                    <div class="gallery-card"
+                        onclick="openLightbox('img/gallery/15.jpeg', 'Kabotcha Lap Desk - Setup 6')">
                         <img src="img/gallery/15.jpeg" alt="Kabotcha Lap Desk Setup" loading="lazy">
                         <div class="gallery-card-overlay">
                             <span class="gallery-zoom-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
                             </span>
                         </div>
                     </div>
-                    <div class="gallery-card" onclick="openLightbox('img/gallery/33.jpeg', 'Kabotcha Lap Desk - Setup 7')">
+                    <div class="gallery-card"
+                        onclick="openLightbox('img/gallery/33.jpeg', 'Kabotcha Lap Desk - Setup 7')">
                         <img src="img/gallery/33.jpeg" alt="Kabotcha Lap Desk Setup" loading="lazy">
                         <div class="gallery-card-overlay">
                             <span class="gallery-zoom-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
                             </span>
                         </div>
                     </div>
@@ -2203,13 +2364,19 @@
     <!-- Lightbox Modal for full-screen photo viewing -->
     <div id="gallery-lightbox" class="lightbox-modal" onclick="closeLightbox(event)">
         <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image preview">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
         </button>
         <button class="lightbox-nav prev" onclick="navigateLightbox(-1, event)" aria-label="Previous photo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M15 18l-6-6 6-6" />
+            </svg>
         </button>
         <button class="lightbox-nav next" onclick="navigateLightbox(1, event)" aria-label="Next photo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M9 18l6-6-6-6" />
+            </svg>
         </button>
         <div class="lightbox-content" onclick="event.stopPropagation()">
             <img id="lightbox-img" src="" alt="Full view">
@@ -2482,7 +2649,7 @@
         // (File > Share > Publish to web > CSV) and paste the link below.
         // ---------------------------------------------------------------
         const LOCAL_CSV_URL = "content.csv";
-        const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5l7zrAEwP4pZWHFERehSrVoTV5l4kj7rgjMG8JaBVFHRBvbM-nAHUJsZgjis82CPBwKzgCFgEhSnL/pub?gid=0&single=true&output=csv"; // <-- published Google Sheet CSV link (optional override)
+        //const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5l7zrAEwP4pZWHFERehSrVoTV5l4kj7rgjMG8JaBVFHRBvbM-nAHUJsZgjis82CPBwKzgCFgEhSnL/pub?gid=0&single=true&output=csv"; // <-- published Google Sheet CSV link (optional override)
 
         let contentOverrides = {};
 
