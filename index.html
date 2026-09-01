@@ -30,12 +30,14 @@
             --maxw: 1180px;
         }
 
-        * {
+        *, *::before, *::after {
             box-sizing: border-box;
         }
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         body {
@@ -45,6 +47,9 @@
             font-family: 'Work Sans', sans-serif;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
         }
 
         html[dir="rtl"] body {
@@ -224,7 +229,8 @@
         .hero {
             padding-top: 40px;
             padding-bottom: 32px;
-            overflow: visible;
+            overflow: hidden;
+            width: 100%;
         }
 
         @media (max-width:720px) {
@@ -242,6 +248,12 @@
             grid-template-columns: 1.05fr 1fr;
             gap: 56px;
             align-items: center;
+            width: 100%;
+        }
+
+        .hero-grid > div {
+            min-width: 0;
+            max-width: 100%;
         }
 
         @media (max-width:900px) {
@@ -297,6 +309,8 @@
             flex-wrap: wrap;
             gap: 12px;
             align-items: center;
+            width: 100%;
+            max-width: 100%;
         }
 
         @media (max-width:480px) {
@@ -314,7 +328,8 @@
         .hero-illustration-wrap {
             position: relative;
             width: 100%;
-            overflow: visible;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         /* ---------- HERO SHOWCASE & SLIDESHOW ---------- */
@@ -322,6 +337,9 @@
             display: flex;
             flex-direction: column;
             width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            overflow: hidden;
         }
 
         /* Scenario Pills */
@@ -329,10 +347,13 @@
             display: flex;
             gap: 6px;
             overflow-x: auto;
+            max-width: 100%;
+            width: 100%;
             padding-bottom: 8px;
             scrollbar-width: none;
             -ms-overflow-style: none;
             margin-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
         }
 
         .slideshow-pills::-webkit-scrollbar {
@@ -340,6 +361,7 @@
         }
 
         .slide-pill {
+            flex-shrink: 0;
             border: 1px solid var(--line);
             background: var(--surface);
             color: var(--ink-soft);
@@ -372,6 +394,7 @@
         .slideshow-frame {
             position: relative;
             width: 100%;
+            max-width: 100%;
             aspect-ratio: 1 / 1;
             border-radius: var(--radius-lg);
             overflow: hidden;
@@ -475,6 +498,8 @@
             border-top: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
             position: relative;
+            overflow: hidden;
+            width: 100%;
         }
 
         .explorer-grid {
@@ -482,6 +507,12 @@
             grid-template-columns: 1.15fr 0.85fr;
             gap: 44px;
             align-items: center;
+            width: 100%;
+        }
+
+        .explorer-grid > div {
+            min-width: 0;
+            max-width: 100%;
         }
 
         .explorer-visual {
@@ -491,6 +522,10 @@
             border-radius: var(--radius-lg);
             padding: 24px;
             box-shadow: var(--shadow);
+            overflow: hidden;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
         }
 
         .glow {
@@ -505,7 +540,9 @@
             position: relative;
             z-index: 1;
             width: 100%;
+            max-width: 100%;
             height: auto;
+            display: block;
         }
 
         .hotspot {
@@ -1412,9 +1449,17 @@
             .hero {
                 padding-top: 18px;
                 padding-bottom: 24px;
+                overflow: hidden;
+                width: 100%;
             }
             .hero-grid {
                 gap: 22px;
+                width: 100%;
+            }
+            .hero-grid > div {
+                min-width: 0;
+                max-width: 100%;
+                width: 100%;
             }
             .eyebrow {
                 font-size: 11px;
@@ -1440,15 +1485,24 @@
                 display: flex;
                 flex-direction: column;
                 width: 100%;
+                max-width: 100%;
             }
             .hero-ctas .btn {
                 width: 100%;
+                max-width: 100%;
                 justify-content: center;
-                padding: 12px 18px;
-                font-size: 14.5px;
+                padding: 13px 18px;
+                font-size: 15px;
+                box-sizing: border-box;
             }
 
             /* HERO SHOWCASE & SLIDESHOW */
+            .hero-slideshow-container {
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+                overflow: hidden;
+            }
             .hero-view-toggle {
                 width: 100%;
                 display: flex;
@@ -1462,15 +1516,22 @@
             }
             .slideshow-pills {
                 margin-bottom: 8px;
-                padding-bottom: 4px;
+                padding-bottom: 6px;
                 gap: 6px;
+                max-width: 100%;
+                width: 100%;
             }
             .slide-pill {
                 padding: 6px 12px;
                 font-size: 11.5px;
+                flex-shrink: 0;
             }
             .slideshow-frame {
                 border-radius: 18px;
+                width: 100%;
+                max-width: 100%;
+                aspect-ratio: 1 / 1;
+                overflow: hidden;
             }
             .slide-nav {
                 width: 34px;
@@ -1597,6 +1658,9 @@
             /* GALLERY MOBILE */
             .gallery-section {
                 padding: 48px 0;
+                overflow: hidden;
+                width: 100%;
+                max-width: 100%;
             }
             .gallery-nav-btns {
                 display: none;
@@ -1607,6 +1671,12 @@
             .gallery-track-wrap {
                 margin: 0 -16px;
                 padding: 6px 16px 14px;
+                max-width: calc(100% + 32px);
+                overflow: hidden;
+            }
+            .gallery-track {
+                max-width: 100%;
+                width: 100%;
             }
             .gallery-card {
                 flex: 0 0 72vw;
