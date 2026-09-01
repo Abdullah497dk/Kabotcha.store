@@ -1464,6 +1464,7 @@
         </div>
     </section>
 
+    <!-- Problem Strip -->
     <div class="problem">
         <p class="reveal" data-key="k010"
             data-en="Hot laptop on your legs. Phone sliding off the blanket. Books everywhere. Sound familiar?"
@@ -1590,14 +1591,6 @@
             </div>
         </div>
     </section>
-
-    <div class="problem">
-        <p class="reveal" data-key="k010"
-            data-en="Hot laptop on your legs. Phone sliding off the blanket. Books everywhere. Sound familiar?"
-            data-ar="لابتوب سخن على رجلك، الموبايل بيقع من على السرير، والكتب متبعترة... حاسس بيك.">
-            Hot laptop on your legs. Phone sliding off the blanket. Books everywhere. Sound familiar?
-        </p>
-    </div>
 
     <section id="features">
         <div class="wrap">
@@ -2066,97 +2059,6 @@
             }
         }
 
-        // feature hotspot info panel
-        const featureInfo = {
-            wood: {
-                en: { title: "Solid wood surface", desc: "A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books." },
-                ar: { title: "سطح خشبي طبيعي", desc: "سطح خشب واسع وناعم يسع اللابتوب، الماوس، أو كومة كتب." }
-            },
-            tablet: {
-                en: { title: "Tablet slot", desc: "A long slot near the back edge props your tablet upright — great for reading, video calls, or a second screen." },
-                ar: { title: "فتحة للتابلت", desc: "فتحة طويلة عند الحافة الخلفية تسند التابلت واقف، تظبط للقراءة أو المكالمات أو كشاشة تانية." }
-            },
-            phone: {
-                en: { title: "Phone slot", desc: "A shorter slot right next to it holds your phone upright, hands-free." },
-                ar: { title: "فتحة للموبايل", desc: "فتحة أقصر جنبها تسند الموبايل واقف من غير ما تمسكه." }
-            },
-            handle: {
-                en: { title: "Built-in carry handle", desc: "A fabric handle at the top lets you carry it around the house like a small bag." },
-                ar: { title: "مقبض حمل مدمج", desc: "مقبض قماش في الأعلى يخليك تنقله في البيت زي الشنطة." }
-            },
-            wrist: {
-                en: { title: "Padded arm rest", desc: "A cushioned fabric bar along the front edge keeps your wrists comfortable while you type or write." },
-                ar: { title: "مسند ذراع مبطّن", desc: "قطعة قماش مبطنة على الحافة الأمامية تريح رسغك وأنت بتكتب." }
-            },
-            base: {
-                en: { title: "Soft base underneath", desc: "A cushioned underside that molds to your lap or the mattress and keeps everything steady." },
-                ar: { title: "قاعدة مبطنة من تحت", desc: "قاعدة مبطنة من تحت بتتلم مع رجلك أو الفرشة وتخلي كل حاجة ثابتة." }
-            }
-        };
-
-        const hotspots = document.querySelectorAll('.hotspot');
-        const infoCard = document.getElementById('info-card');
-        const dynamicConnector = document.getElementById('dynamic-connector-line');
-        const exploreContainer = document.querySelector('.explore-container');
-
-        function updateConnector(activeHotspot) {
-            if (!activeHotspot || !dynamicConnector || !exploreContainer || !infoCard) return;
-
-            // Find the pulse element (glowing circle) or fallback to first child part
-            const anchor = activeHotspot.querySelector('.pulse') || activeHotspot.querySelector('.part');
-            if (!anchor) return;
-
-            // Get rects
-            const containerRect = exploreContainer.getBoundingClientRect();
-            const anchorRect = anchor.getBoundingClientRect();
-            const cardRect = infoCard.getBoundingClientRect();
-
-            // Calculate x and y coordinates relative to the container
-            const x = (anchorRect.left + anchorRect.width / 2) - containerRect.left;
-            const y = (anchorRect.top + anchorRect.height / 2) - containerRect.top;
-            
-            // Calculate top of info-card relative to container
-            const cardTop = cardRect.top - containerRect.top;
-
-            // Update line style
-            dynamicConnector.style.left = `${x}px`;
-            dynamicConnector.style.top = `${y}px`;
-            // Draw all the way to the top border of the info card
-            dynamicConnector.style.height = `${Math.max(0, cardTop - y)}px`;
-            
-            // Re-trigger scaleY draw animation
-            dynamicConnector.classList.remove('active');
-            void dynamicConnector.offsetWidth; // force reflow
-            dynamicConnector.classList.add('active');
-        }
-
-        function triggerCardAnim(activeHotspot) {
-            infoCard.classList.remove('flash');
-            void infoCard.offsetWidth; // force reflow
-            infoCard.classList.add('flash');
-            
-            // position and animate connector line
-            updateConnector(activeHotspot);
-        }
-
-        hotspots.forEach(h => {
-            h.addEventListener('click', () => {
-                hotspots.forEach(o => o.classList.remove('active'));
-                h.classList.add('active');
-                const key = h.dataset.feature;
-                const data = featureInfo[key][currentLang];
-                document.getElementById('info-title').textContent = data.title;
-                document.getElementById('info-desc').textContent = data.desc;
-                triggerCardAnim(h);
-            });
-        });
-
-        // Trigger on load for the default active hotspot
-        const defaultActive = document.querySelector('.hotspot.active');
-        if (defaultActive) {
-            triggerCardAnim(defaultActive);
-        }
-
         // ---------------------------------------------------------------
         // HERO SLIDESHOW LOGIC
         // ---------------------------------------------------------------
@@ -2320,17 +2222,26 @@
         selectFeature('wood');
 
         // scroll reveal
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+        }
 
-        // load owner edits from the Google Sheet (if configured), then apply
-        // the visitor's language: Arabic browsers get Arabic, everything else
-        // defaults to English. The EN/AR toggle above still works manually.
+        // Apply default initial language immediately, then overlay async overrides
+        const initialLang = (navigator.language || navigator.userLanguage || '').toLowerCase().startsWith('ar') ? 'ar' : 'en';
+        setLang(initialLang);
+
         loadContentOverrides().then(() => {
-            const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-            setLang(browserLang.startsWith('ar') ? 'ar' : 'en');
+            setLang(currentLang);
         });
     </script>
 </body>
