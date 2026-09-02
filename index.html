@@ -298,12 +298,23 @@
             line-height: 1.25;
         }
 
-        .hero p.lead {
+        .hero .lead,
+        .hero-lead {
             margin-top: 18px;
             font-size: 16px;
             line-height: 1.6;
             color: var(--ink-soft);
-            max-width: 46ch;
+            max-width: 50ch;
+        }
+
+        .hero-lead p {
+            margin: 0 0 6px 0;
+        }
+
+        .hero-lead p:last-child {
+            margin-bottom: 0;
+            font-weight: 600;
+            color: var(--wood);
         }
 
         .hero-ctas {
@@ -1896,15 +1907,16 @@
         <div class="wrap hero-grid">
             <div>
                 <div class="eyebrow" data-key="k002" data-en="Kabotcha · Lap &amp; Bed Desk"
-                    data-ar="كابوتشا · مكتب الأريكة والسرير">Kabotcha · Lap &amp; Bed Desk</div>
+                    data-ar="كابوتشا ستور · المكتب المحمول">Kabotcha · Lap &amp; Bed Desk</div>
                 <h1 data-key="k003" data-en="Your couch. Your desk. Your rules."
-                    data-ar="مساحتك للشغل... من مكانك المفضّل">Your couch. Your desk. Your rules.</h1>
-                <p class="lead" data-key="k004"
-                    data-en="A cushioned lap desk with a real wood top — room for your laptop and mouse, built-in slots for your tablet and phone, and a padded arm rest for comfortable typing or studying."
-                    data-ar="مكتب أريكة مبطّن بسطح خشب طبيعي، يسع اللابتوب والماوس، وله فتحات مخصصة للتابلت والموبايل، ومسند ذراع مبطّن عشان تشتغل أو تذاكر بارتياح.">
-                    A cushioned lap desk with a real wood top — room for your laptop and mouse, built-in slots for your
-                    tablet and phone, and a padded arm rest for comfortable typing or studying.
-                </p>
+                    data-ar="مكتبك هيكون مكان ما تكون">Your couch. Your desk. Your rules.</h1>
+                <div class="lead hero-lead">
+                    <p data-key="k004_1" data-en="Tired? Bored? Lazy? Restless?" data-ar="تعبان؟ زهقان؟ كسلان؟ ملان؟">Tired? Bored? Lazy? Restless?</p>
+                    <p data-key="k004_2" data-en="Got work? Studying? Or just want to relax?" data-ar="عندك شغل؟ عندك مذاكرة؟ او نفسك تتفرج مرتاح؟">Got work? Studying? Or just want to relax?</p>
+                    <p data-key="k004_3" data-en="On the bed, on the couch, on the balcony, in the garden, or on the floor." data-ar="على السرير، على الكنبة، في البلكونة، في الجنينـة، أو حتى على الأرض.">On the bed, on the couch, on the balcony, in the garden, or on the floor.</p>
+                    <p data-key="k004_4" data-en="Laptop in front, tablet beside, phone in reach..." data-ar="لابك قدامك، تابلتك جنبك، موبايلك معاك...">Laptop in front, tablet beside, phone in reach...</p>
+                    <p data-key="k004_5" data-en="Right where you are, your desk is with you." data-ar="وإنت في مكانك، مكتبك معاك.">Right where you are, your desk is with you.</p>
+                </div>
                 <div class="hero-ctas">
                     <a class="btn btn-primary" id="wa-hero" target="_blank" rel="noopener" data-key="k005"
                         data-en="Order on WhatsApp" data-ar="اطلب عبر واتساب">Order on WhatsApp</a>
@@ -1976,7 +1988,7 @@
     <div class="problem">
         <p class="reveal" data-key="k010"
             data-en="Hot laptop on your legs. Phone sliding off the blanket. Books everywhere. Sound familiar?"
-            data-ar="لابتوب سخن على رجلك، الموبايل بيقع من على السرير، والكتب متبعترة... حاسس بيك.">
+            data-ar="المكتب المحمول خفيف و مريح و  عملي . مكتبك معاك من غير ما تسيب مكانك لانه هيكون مطرح ما تكون">
             Hot laptop on your legs. Phone sliding off the blanket. Books everywhere. Sound familiar?
         </p>
     </div>
@@ -1987,7 +1999,7 @@
             <div class="section-head reveal">
                 <div class="eyebrow" data-key="k007" data-en="👆 Tap the highlighted parts to explore"
                     data-ar="👆 دوس على النقط المضيئة تعرف أكتر">👆 Tap the highlighted parts to explore</div>
-                <h2 data-key="k012" data-en="Everything you need, in one stand" data-ar="كل اللي محتاجه، في حاجة واحدة">
+                <h2 data-key="k012" data-en="Everything you need, in one stand" data-ar="كل حاجة ليها مكان… وإنت ليك راحتك">
                     Everything you need, in one stand</h2>
             </div>
 
@@ -2104,9 +2116,9 @@
     <section id="features">
         <div class="wrap">
             <div class="section-head reveal">
-                <div class="eyebrow" data-key="k011" data-en="What's built in" data-ar="إيه اللي موجود">What's built in
+                <div class="eyebrow" data-key="k011" data-en="What's built in" data-ar="إيه اللي موجود؟">What's built in
                 </div>
-                <h2 data-key="k012" data-en="Everything you need, in one stand" data-ar="كل اللي محتاجه، في حاجة واحدة">
+                <h2 data-key="k012" data-en="Everything you need, in one stand" data-ar="كل حاجة ليها مكان… وإنت ليك راحتك">
                     Everything you need, in one stand</h2>
             </div>
             <div class="feat-grid">
@@ -2116,10 +2128,10 @@
                             <rect x="3" y="4" width="18" height="12" rx="2" />
                             <path d="M2 20h20" />
                         </svg></div>
-                    <h3 data-key="k013" data-en="Solid wood surface" data-ar="سطح خشبي طبيعي">Solid wood surface</h3>
+                    <h3 data-key="k013" data-en="Solid wood surface" data-ar="سطح واسع">Solid wood surface</h3>
                     <p data-key="k014"
                         data-en="A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books."
-                        data-ar="سطح خشب واسع وناعم يسع اللابتوب، الماوس، أو كومة كتب.">A wide, smooth wood top with
+                        data-ar="لابتوبك، الماوس، و موبايلك و كتابك… كلهم قدامك وفي مساحة مريحة.">A wide, smooth wood top with
                         plenty of room for your laptop, a mouse, or a stack of books.</p>
                 </div>
                 <div class="feat-card reveal">
@@ -2128,10 +2140,10 @@
                             <rect x="4" y="3" width="16" height="18" rx="2" />
                             <path d="M4 17h16" />
                         </svg></div>
-                    <h3 data-key="k015" data-en="Tablet slot" data-ar="فتحة للتابلت">Tablet slot</h3>
+                    <h3 data-key="k015" data-en="Tablet slot" data-ar="مكان للتابلت">Tablet slot</h3>
                     <p data-key="k016"
                         data-en="A long slot near the back edge props your tablet upright — great for reading, video calls, or a second screen."
-                        data-ar="فتحة طويلة عند الحافة الخلفية تسند التابلت واقف، تظبط للقراءة أو المكالمات.">A long
+                        data-ar="ثبّت التابلت قدامك واقرأ، ذاكر، اتفرج .">A long
                         slot near the back edge props your tablet upright — great for reading, video calls, or a second
                         screen.</p>
                 </div>
@@ -2141,10 +2153,10 @@
                             <rect x="7" y="2" width="10" height="20" rx="2" />
                             <path d="M11 18h2" />
                         </svg></div>
-                    <h3 data-key="k017" data-en="Phone slot" data-ar="فتحة للموبايل">Phone slot</h3>
+                    <h3 data-key="k017" data-en="Phone slot" data-ar="مكان للموبايل">Phone slot</h3>
                     <p data-key="k018"
                         data-en="A shorter slot right next to the tablet slot holds your phone upright, hands-free."
-                        data-ar="فتحة أقصر جنب فتحة التابلت تسند الموبايل واقف من غير ما تمسكه.">A shorter slot right
+                        data-ar="موبايلك قريب منك وفي مكانه، من غير ما يفضل في إيدك.">A shorter slot right
                         next to the tablet slot holds your phone upright, hands-free.</p>
                 </div>
                 <div class="feat-card reveal">
@@ -2153,11 +2165,11 @@
                             <path d="M6 8V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2" />
                             <rect x="4" y="8" width="16" height="4" rx="2" />
                         </svg></div>
-                    <h3 data-key="k019" data-en="Built-in carry handle" data-ar="مقبض حمل مدمج">Built-in carry handle
+                    <h3 data-key="k019" data-en="Built-in carry handle" data-ar="مقبض للحمل">Built-in carry handle
                     </h3>
                     <p data-key="k020"
                         data-en="A fabric handle at the top lets you move it around the house like a small bag."
-                        data-ar="مقبض قماش في الأعلى يخليك تنقله في البيت زي الشنطة.">A fabric handle at the top lets
+                        data-ar="خلصت؟ شيله وخده معاك. من السرير للكنبة، ومن الصالة للبلكونة.">A fabric handle at the top lets
                         you move it around the house like a small bag.</p>
                 </div>
                 <div class="feat-card reveal">
@@ -2166,10 +2178,10 @@
                             <rect x="3" y="9" width="18" height="7" rx="3.5" />
                             <path d="M6 16v2M18 16v2" />
                         </svg></div>
-                    <h3 data-key="k021" data-en="Padded arm rest" data-ar="مسند ذراع مبطّن">Padded arm rest</h3>
+                    <h3 data-key="k021" data-en="Padded arm rest" data-ar="مسند للذراع مبطّن">Padded arm rest</h3>
                     <p data-key="k022"
                         data-en="A cushioned fabric bar along the front edge keeps your wrists comfortable while you type or write."
-                        data-ar="قطعة قماش مبطنة على الحافة الأمامية تريح رسغك وأنت بتكتب.">A cushioned fabric bar along
+                        data-ar="مسند مبطن يخلي إيدك وذراعك في وضع أكثر راحة أثناء الاستخدام.">A cushioned fabric bar along
                         the front edge keeps your wrists comfortable while you type or write.</p>
                 </div>
                 <div class="feat-card reveal">
@@ -2178,11 +2190,11 @@
                             <path d="M4 14c0-4 3-8 8-8s8 4 8 8" />
                             <path d="M2 18h20" />
                         </svg></div>
-                    <h3 data-key="k023" data-en="Soft base underneath" data-ar="قاعدة مبطنة من تحت">Soft base underneath
+                    <h3 data-key="k023" data-en="Soft base underneath" data-ar="قاعدة مبطنة">Soft base underneath
                     </h3>
                     <p data-key="k024"
                         data-en="Molds to your lap or the mattress and keeps everything steady, wherever you sit."
-                        data-ar="بتتلم مع رجلك أو الفرشة، وتخلي كل حاجة ثابتة.">Molds to your lap or the mattress and
+                        data-ar="قاعدة اسفنجيه تستقر على رجلك أو السرير أو الكنبة، لثبات وراحة أفضل.">Molds to your lap or the mattress and
                         keeps everything steady, wherever you sit.</p>
                 </div>
             </div>
@@ -2196,37 +2208,14 @@
             </div>
             <div class="reveal">
                 <div class="eyebrow" data-key="k025" data-en="Materials" data-ar="الخامات">Materials</div>
-                <h2 data-key="k026" data-en="Made to last. Styled to belong." data-ar="جودة تدوم، وشكل يليق بمكانك">Made
+                <h2 data-key="k026" data-en="Made to last. Styled to belong." data-ar="خامات مختارة لراحة تدوم وشكل يليق بمكانك">Made
                     to last. Styled to belong.</h2>
                 <p data-key="k027"
                     data-en="A real wood top finished by hand, a padded fabric arm rest, and a dense cushioned base underneath — not a flimsy tray that wobbles or scratches your favorite blanket."
-                    data-ar="سطح خشب طبيعي متشغل بعناية، مسند ذراع مبطّن، وقاعدة إسفنجية كثيفة من تحت — مش تابلة هشة بتهتز أو بتخدش البطانية بتاعتك.">
+                    data-ar="سطح من  MDF مكسو بقشرة خشب طبيعي عالية الجودة  بلمسة ناعمة وأنيقة، مع مسند ذراع مبطّن وقاعدة إسفنجية كثيفة من أسفل، عشان تجمع بين  المتانة، الراحة، وسهولة الاستخدام في كل مرة.">
                     A real wood top finished by hand, a padded fabric arm rest, and a dense cushioned base underneath —
                     not a flimsy tray that wobbles or scratches your favorite blanket.
                 </p>
-                <ul class="quality-list">
-                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5">
-                            <path d="M20 6L9 17l-5-5" />
-                        </svg><span data-key="k028" data-en="Genuine wood top, smooth finish"
-                            data-ar="سطح خشب طبيعي بلمسة نهائية ناعمة">Genuine wood top, smooth finish</span></li>
-                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5">
-                            <path d="M20 6L9 17l-5-5" />
-                        </svg><span data-key="k029" data-en="Angled slots for tablet and phone"
-                            data-ar="فتحات مائلة للتابلت والموبايل">Angled slots for tablet and phone</span></li>
-                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5">
-                            <path d="M20 6L9 17l-5-5" />
-                        </svg><span data-key="k030" data-en="Padded fabric arm rest for typing or writing"
-                            data-ar="مسند ذراع مبطّن للكتابة">Padded fabric arm rest for typing or writing</span></li>
-                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5">
-                            <path d="M20 6L9 17l-5-5" />
-                        </svg><span data-key="k031" data-en="Dense sponge base — stable on couch or bed"
-                            data-ar="قاعدة إسفنجية كثيفة، ثابتة على الأريكة أو السرير">Dense sponge base — stable on
-                            couch or bed</span></li>
-                </ul>
             </div>
         </div>
     </section>
@@ -2801,32 +2790,32 @@
             wood: {
                 badge: { en: "Wood Top", ar: "سطح الخشب" },
                 en: { title: "Solid wood surface", desc: "A wide, smooth wood top with plenty of room for your laptop, a mouse, or a stack of books." },
-                ar: { title: "سطح خشبي طبيعي", desc: "سطح خشب واسع وناعم يسع اللابتوب، الماوس، أو كومة كتب." }
+                ar: { title: "سطح واسع", desc: "لابتوبك، الماوس، و موبايلك و كتابك… كلهم قدامك وفي مساحة مريحة." }
             },
             tablet: {
                 badge: { en: "Tablet Slot", ar: "فتحة التابلت" },
                 en: { title: "Tablet slot", desc: "A long slot near the back edge props your tablet upright — great for reading, video calls, or a second screen." },
-                ar: { title: "فتحة للتابلت", desc: "فتحة طويلة عند الحافة الخلفية تسند التابلت واقف، تظبط للقراءة أو المكالمات أو كشاشة تانية." }
+                ar: { title: "مكان للتابلت", desc: "ثبّت التابلت قدامك واقرأ، ذاكر، اتفرج ." }
             },
             phone: {
                 badge: { en: "Phone Slot", ar: "فتحة الموبايل" },
                 en: { title: "Phone slot", desc: "A shorter slot right next to it holds your phone upright, hands-free." },
-                ar: { title: "فتحة للموبايل", desc: "فتحة أقصر جنبها تسند الموبايل واقف من غير ما تمسكه." }
+                ar: { title: "مكان للموبايل", desc: "موبايلك قريب منك وفي مكانه، من غير ما يفضل في إيدك." }
             },
             handle: {
                 badge: { en: "Carry Handle", ar: "مقبض الحمل" },
                 en: { title: "Built-in carry handle", desc: "A fabric handle at the top lets you carry it around the house like a small bag." },
-                ar: { title: "مقبض حمل مدمج", desc: "مقبض قماش في الأعلى يخليك تنقله في البيت زي الشنطة." }
+                ar: { title: "مقبض للحمل", desc: "خلصت؟ شيله وخده معاك. من السرير للكنبة، ومن الصالة للبلكونة." }
             },
             wrist: {
                 badge: { en: "Arm Rest", ar: "مسند الذراع" },
                 en: { title: "Padded arm rest", desc: "A cushioned fabric bar along the front edge keeps your wrists comfortable while you type or write." },
-                ar: { title: "مسند ذراع مبطّن", desc: "قطعة قماش مبطنة على الحافة الأمامية تريح رسغك وأنت بتكتب." }
+                ar: { title: "مسند للذراع مبطّن", desc: "مسند مبطن يخلي إيدك وذراعك في وضع أكثر راحة أثناء الاستخدام." }
             },
             base: {
                 badge: { en: "Base Cushion", ar: "القاعدة المبطنة" },
                 en: { title: "Soft base underneath", desc: "A cushioned underside that molds to your lap or the mattress and keeps everything steady." },
-                ar: { title: "قاعدة مبطنة من تحت", desc: "قاعدة مبطنة من تحت بتتلم مع رجلك أو الفرشة وتخلي كل حاجة ثابتة." }
+                ar: { title: "قاعدة مبطنة", desc: "قاعدة اسفنجيه تستقر على رجلك أو السرير أو الكنبة، لثبات وراحة أفضل." }
             }
         };
 
