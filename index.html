@@ -792,6 +792,45 @@
             font-size: clamp(24px, 3.2vw, 32px);
         }
 
+        /* ---------- DIMENSIONS SECTION ---------- */
+        .dimensions-section {
+            padding: 56px 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .dimensions-card {
+            max-width: 680px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--line);
+            background: #F8F3EA;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .dimensions-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 60px -20px rgba(59, 39, 23, 0.4);
+        }
+
+        .dimensions-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width:720px) {
+            .dimensions-section {
+                padding: 36px 0;
+            }
+
+            .dimensions-card {
+                border-radius: var(--radius-md);
+            }
+        }
+
         /* ---------- FEATURE GRID ---------- */
         .section-head {
             max-width: 640px;
@@ -2109,6 +2148,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Dimensions Section -->
+    <section class="dimensions-section" aria-label="Product Dimensions">
+        <div class="wrap">
+            <div class="dimensions-card reveal">
+                <img src="img/dimensions.jpeg" alt="مقاسات المنتج - كابوتشا ستور" loading="lazy">
             </div>
         </div>
     </section>
