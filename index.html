@@ -1779,8 +1779,16 @@
 
             /* QUALITY / MATERIALS */
             .grain-card {
-                aspect-ratio: 4 / 3;
+                aspect-ratio: auto;
                 border-radius: 18px;
+                overflow: hidden;
+                width: 100%;
+            }
+
+            .grain-card img {
+                width: 100%;
+                height: auto;
+                display: block;
             }
 
             .quality h2 {
