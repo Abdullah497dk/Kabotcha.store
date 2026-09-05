@@ -1974,8 +1974,6 @@
                 <div class="hero-ctas">
                     <a class="btn btn-primary" id="wa-hero" target="_blank" rel="noopener" data-key="k005"
                         data-en="Order on WhatsApp" data-ar="اطلب عبر واتساب">اطلب عبر واتساب</a>
-                    <a class="btn btn-ghost" href="#features" data-key="k006" data-en="See how it works ↓"
-                        data-ar="شوف طريقة استخدامه ↓">شوف طريقة استخدامه ↓</a>
                 </div>
             </div>
 
@@ -2171,7 +2169,7 @@
     <section class="dimensions-section" aria-label="Product Dimensions">
         <div class="wrap">
             <div class="dimensions-card reveal">
-                <img src="img/dimensions.jpeg" alt="مقاسات المنتج - كابوتشا ستور" loading="lazy">
+                <img id="dimensions-img" src="img/dimensions-ar.jpeg" alt="مقاسات المنتج - كابوتشا ستور" data-src-ar="img/dimensions-ar.jpeg" data-src-en="img/dimensions-en.jpeg" data-alt-ar="مقاسات المنتج - كابوتشا ستور" data-alt-en="Product Dimensions - Kabotcha.store" loading="lazy">
             </div>
         </div>
     </section>
@@ -2257,7 +2255,7 @@
     <section class="quality">
         <div class="wrap quality-grid">
             <div class="grain-card reveal">
-                <img src="img/Materials.jpeg" alt="Kabotcha Lap Desk Materials and Craftsmanship" loading="lazy">
+                <img id="materials-img" src="img/Materials.jpeg" alt="خامات وجودة كابوتشا ستور" data-src-ar="img/Materials.jpeg" data-src-en="img/Materials-en.jpeg" data-alt-ar="خامات وجودة كابوتشا ستور" data-alt-en="Kabotcha Lap Desk Materials and Craftsmanship" loading="lazy">
             </div>
             <div class="reveal">
                 <div class="eyebrow" data-key="k025" data-en="Materials" data-ar="الخامات">الخامات</div>
@@ -2282,8 +2280,8 @@
                         living</h2>
                     <p class="gallery-sub" data-key="k063"
                         data-en="Real setups, real moments. From morning coffee to late-night study sessions."
-                        data-ar="لحظات حقيقية واستخدامات يومية، من قهوة الصباح لمذاكرة بالليل.">
-                        Real setups, real moments. From morning coffee to late-night study sessions.
+                        data-ar="راحة حقيقية واستخدامات يومية، من قهوة الصباح لمذاكرة بالليل.">
+                        راحة حقيقية واستخدامات يومية، من قهوة الصباح لمذاكرة بالليل.
                     </p>
                 </div>
                 <!-- Desktop Nav Controls -->
@@ -2619,8 +2617,8 @@ Follow us and be the first to know what's new from Kabotcha.</p>
                     <div class="brand">
                         <img src="img/logo.png" alt="Kabotcha.store logo">
                     </div>
-                    <p class="footer-tag" data-key="k051" data-en="Comfort, wherever you sit."
-                        data-ar="الراحة، في أي مكان بتقعد فيه.">Comfort, wherever you sit.</p>
+                    <p class="footer-tag" data-key="k051" data-en="Kabotcha Store · Smart products for true comfort"
+                        data-ar="كابوتشا ستور منتجات ذكية للراحة الحقيقية">كابوتشا ستور منتجات ذكية للراحة الحقيقية</p>
                 </div>
                 <div class="social-icons">
                     <a href="https://www.tiktok.com/@kabotcha.store" target="_blank" rel="noopener" aria-label="TikTok">
@@ -2656,9 +2654,6 @@ Follow us and be the first to know what's new from Kabotcha.</p>
                 <span data-key="k052" data-en="© 2026 Kabotcha.store — All rights reserved."
                     data-ar="© 2026 Kabotcha.store — جميع الحقوق محفوظة.">© 2026 Kabotcha.store — All rights
                     reserved.</span>
-                <span data-key="k053" data-en="Made for couches, beds, and everywhere in between."
-                    data-ar="اتصنع للأريكة والسرير وكل حتة بينهم.">Made for couches, beds, and everywhere in
-                    between.</span>
             </div>
         </div>
     </footer>
@@ -2698,6 +2693,16 @@ Follow us and be the first to know what's new from Kabotcha.</p>
                 const val = (overrideVal && overrideVal.trim()) ? overrideVal : el.dataset[lang];
                 if (val !== undefined) el.textContent = val;
             });
+            const dimImg = document.getElementById('dimensions-img');
+            if (dimImg) {
+                dimImg.src = lang === 'en' ? (dimImg.dataset.srcEn || 'img/dimensions-en.jpeg') : (dimImg.dataset.srcAr || 'img/dimensions-ar.jpeg');
+                dimImg.alt = lang === 'en' ? (dimImg.dataset.altEn || 'Product Dimensions - Kabotcha.store') : (dimImg.dataset.altAr || 'مقاسات المنتج - كابوتشا ستور');
+            }
+            const matImg = document.getElementById('materials-img');
+            if (matImg) {
+                matImg.src = lang === 'en' ? (matImg.dataset.srcEn || 'img/Materials-en.jpeg') : (matImg.dataset.srcAr || 'img/Materials.jpeg');
+                matImg.alt = lang === 'en' ? (matImg.dataset.altEn || 'Kabotcha Lap Desk Materials and Craftsmanship') : (matImg.dataset.altAr || 'خامات وجودة كابوتشا ستور');
+            }
             if (typeof selectFeature === 'function') {
                 selectFeature(currentFeature);
             }
